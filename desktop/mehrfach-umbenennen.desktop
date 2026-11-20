@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Mehrfach-Umbenennen
+Name[en]=Multi-Rename
+Comment=Viele Dateien auf einmal umbenennen – mit Bausteinen wie im Total Commander
+Comment[en]=Rename many files at once using Total Commander style placeholders
+Exec=@LAUNCHER@ %F
+Icon=edit-find-replace
+Terminal=false
+Categories=GTK;Utility;FileTools;
+Keywords=rename;umbenennen;bulk;batch;

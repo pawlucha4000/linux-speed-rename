@@ -1,0 +1,10 @@
+[Nemo Action]
+Name=Mehrfach umbenennen …
+Name[en]=Multi-rename …
+Comment=Markierte Dateien mit Platzhaltern wie [N], [C] und [YMD] umbenennen
+Comment[en]=Rename the selected files with placeholders like [N], [C] and [YMD]
+Exec=@LAUNCHER@ %F
+Icon-Name=edit-find-replace
+Selection=notnone
+Extensions=any;
+Quote=double
