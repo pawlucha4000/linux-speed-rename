@@ -1,0 +1,219 @@
+# French translation of Mehrfach-Umbenennen / Multi-Rename.
+# This file is distributed under the same licence as the mehrfach-umbenennen package.
+# Initial machine-assisted translation - corrections by native speakers are welcome.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mehrfach-umbenennen\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "3 digits gives 001, 002, 003 …"
+msgstr "3 chiffres donne 001, 002, 003 …"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Case:"
+msgstr "Casse :"
+
+msgid "Choose files to rename"
+msgstr "Choisir les fichiers à renommer"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Conflicts: {n} – please adjust the mask."
+msgstr "Conflits : {n} – veuillez adapter le masque."
+
+msgid "Counter [C]"
+msgstr "Compteur [C]"
+
+msgid "Digits:"
+msgstr "Chiffres :"
+
+msgid "Duplicate name"
+msgstr "Nom en double"
+
+msgid "Each Word Capitalised"
+msgstr "Chaque Mot En Majuscule"
+
+msgid "Empty name"
+msgstr "Nom vide"
+
+msgid "Example name"
+msgstr "Exemple de nom"
+
+msgid "Extension"
+msgstr "Extension"
+
+msgid "File already exists"
+msgstr "Le fichier existe déjà"
+
+msgid "Files renamed: {n}. “Undo” restores the old names."
+msgstr "Fichiers renommés : {n}. « Défaire » rétablit les anciens noms."
+
+msgid "Files restored to their old names: {n}"
+msgstr "Fichiers remis à leur ancien nom : {n}"
+
+msgid "Files to be renamed: {n} of {total}"
+msgstr "Fichiers à renommer : {n} sur {total}"
+
+msgid "Files: {total} – no changes yet"
+msgstr "Fichiers : {total} – aucune modification pour l’instant"
+
+msgid "First letter capital"
+msgstr "Première lettre en majuscule"
+
+msgid "Folder"
+msgstr "Dossier"
+
+msgid "For advanced users: treat the search text as a regular expression"
+msgstr "Pour utilisateurs avancés : traiter le texte recherché comme expression régulière"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "Insert"
+msgstr "Insérer"
+
+msgid "Invalid name"
+msgstr "Nom non valide"
+
+msgid "Invalid regular expression: {error}"
+msgstr "Expression régulière non valide : {error}"
+
+msgid "Multi-Rename"
+msgstr "Renommage multiple"
+
+msgid "Name contains '/'"
+msgstr "Le nom contient « / »"
+
+msgid "Name too long"
+msgstr "Nom trop long"
+
+msgid "New file name"
+msgstr "Nouveau nom de fichier"
+
+msgid "New name"
+msgstr "Nouveau nom"
+
+msgid "Note"
+msgstr "Remarque"
+
+msgid "Old name"
+msgstr "Ancien nom"
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Order (sets the counter):"
+msgstr "Ordre (détermine le compteur) :"
+
+msgid "Regular expression"
+msgstr "Expression régulière"
+
+msgid "Rename"
+msgstr "Renommer"
+
+msgid "Renaming failed. Nothing was changed."
+msgstr "Échec du renommage. Rien n’a été modifié."
+
+msgid "Replace only the first occurrence"
+msgstr "Remplacer uniquement la première occurrence"
+
+msgid "Replace with:"
+msgstr "Remplacer par :"
+
+msgid "Reset all"
+msgstr "Tout réinitialiser"
+
+msgid "Search & Replace"
+msgstr "Rechercher et remplacer"
+
+msgid "Search for:"
+msgstr "Rechercher :"
+
+msgid "Select part"
+msgstr "Sélectionner une partie"
+
+msgid "Select the part you want to keep with the mouse:"
+msgstr "Sélectionnez avec la souris la partie à conserver :"
+
+msgid "Start at:"
+msgstr "Commencer à :"
+
+msgid "Step:"
+msgstr "Pas :"
+
+msgid "Target already exists: {path}"
+msgstr "La cible existe déjà : {path}"
+
+msgid "There are conflicts, please resolve them first."
+msgstr "Il y a des conflits, veuillez d’abord les résoudre."
+
+msgid "UPPERCASE"
+msgstr "MAJUSCULES"
+
+msgid "Unchanged"
+msgstr "Inchangé"
+
+msgid "Undo"
+msgstr "Défaire"
+
+msgid "Undo is not possible."
+msgstr "Impossible de défaire."
+
+msgid "[C] Counter"
+msgstr "[C] Compteur"
+
+msgid "[E#-#] Part"
+msgstr "[E#-#] Partie"
+
+msgid "[E] Extension"
+msgstr "[E] Extension"
+
+msgid "[N#-#] Part"
+msgstr "[N#-#] Partie"
+
+msgid "[N] Name"
+msgstr "[N] Nom"
+
+msgid "[P] Folder"
+msgstr "[P] Dossier"
+
+msgid "[YMD] Date"
+msgstr "[YMD] Date"
+
+msgid "[hms] Time"
+msgstr "[hms] Heure"
+
+msgid "also in extension"
+msgstr "aussi dans l’extension"
+
+msgid "by date"
+msgstr "par date"
+
+msgid "by name"
+msgstr "par nom"
+
+msgid "count from the end (the last characters)"
+msgstr "compter depuis la fin (les derniers caractères)"
+
+msgid "lowercase"
+msgstr "minuscules"
+
+msgid "only once"
+msgstr "une seule fois"
+
+msgid "or drag rows with the mouse"
+msgstr "ou déplacez les lignes avec la souris"
+
+msgid "unchanged"
+msgstr "inchangé"
+
+msgid "up to the end (even if other names are longer)"
+msgstr "jusqu’à la fin (même si d’autres noms sont plus longs)"

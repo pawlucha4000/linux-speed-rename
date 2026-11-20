@@ -1,0 +1,34 @@
+<b>Como funciona</b>
+
+No topo, você monta o novo nome a partir de <b>blocos</b>. Clicar em um botão insere o bloco na posição do cursor. Você também pode digitar texto normal ao redor.
+
+<b>Nome do arquivo</b>
+  <tt>[N]</tt>        o nome antigo (sem extensão)
+  <tt>[N2-5]</tt>     apenas os caracteres 2 a 5 do nome antigo
+  <tt>[N3-]</tt>      do caractere 3 até o fim
+  <tt>[N-4]</tt>      os últimos 4 caracteres
+  O botão <b>[N#-#] Parte</b> abre uma janela onde você simplesmente seleciona a parte com o mouse.
+
+<b>Extensão</b>
+  <tt>[E]</tt>        a extensão antiga (por ex. jpg). Campo vazio = sem extensão.
+
+<b>Contador, data, hora</b>
+  <tt>[C]</tt>        contador – início, incremento e dígitos à direita
+  <tt>[YMD]</tt>      data de modificação do arquivo, por ex. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  ano, mês e dia separados
+  <tt>[hms]</tt>      hora de modificação, por ex. 14-05-09
+  <tt>[P]</tt>        nome da pasta onde está o arquivo
+
+<b>Exemplos</b>
+  <tt>Férias [C]</tt> com 3 dígitos  →  Férias 001.jpg, Férias 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Praia.jpg
+  <tt>[N1-7]</tt>  →  manter apenas os 7 primeiros caracteres
+
+<b>Localizar e substituir</b> é aplicado depois da máscara. “Expressão regular” permite padrões avançados, mas nunca é necessária.
+
+A ordem da lista define o contador. Arraste as linhas com o mouse ou ordene por nome ou data.
+
+A pré-visualização fica vermelha se um nome aparecer duas vezes ou já existir – nesse caso nada é renomeado.
+<b>Desfazer</b> reverte a última renomeação, mesmo depois de reiniciar o programa.
+
+Teclado: <b>Ctrl+Enter</b> renomear, <b>F1</b> ajuda, <b>Esc</b> fechar.

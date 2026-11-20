@@ -1,5 +1,5 @@
 #!/bin/sh
-# Entfernt Mehrfach-Umbenennen und stellt Nemos vorheriges Umbenenn-Tool wieder her.
+# Removes Multi-Rename and restores Nemo's previous bulk-rename tool.
 set -eu
 
 DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
@@ -15,4 +15,4 @@ rm -f "$HOME/.local/bin/mehrfach-umbenennen" \
       "$DATA/applications/mehrfach-umbenennen.desktop" \
       "$DATA/nemo/actions/mehrfach-umbenennen.nemo_action"
 rm -rf "$DATA/mehrfach-umbenennen/lib" "$PREV"
-echo "Entfernt. Einstellungen in ~/.config/mehrfach-umbenennen und das Rückgängig-Protokoll bleiben erhalten."
+echo "Removed. Settings in ~/.config/mehrfach-umbenennen and the undo journal are kept."

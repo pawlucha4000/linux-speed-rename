@@ -1,0 +1,34 @@
+<b>Comment ça marche</b>
+
+En haut, vous composez le nouveau nom à partir de <b>blocs</b>. Un clic sur un bouton insère le bloc à la position du curseur. Vous pouvez aussi saisir du texte normal autour.
+
+<b>Nom de fichier</b>
+  <tt>[N]</tt>        l’ancien nom (sans extension)
+  <tt>[N2-5]</tt>     uniquement les caractères 2 à 5 de l’ancien nom
+  <tt>[N3-]</tt>      du caractère 3 jusqu’à la fin
+  <tt>[N-4]</tt>      les 4 derniers caractères
+  Le bouton <b>[N#-#] Partie</b> ouvre une fenêtre où vous sélectionnez simplement la partie avec la souris.
+
+<b>Extension</b>
+  <tt>[E]</tt>        l’ancienne extension (p. ex. jpg). Champ vide = pas d’extension.
+
+<b>Compteur, date, heure</b>
+  <tt>[C]</tt>        compteur – début, pas et nombre de chiffres à droite
+  <tt>[YMD]</tt>      date de modification du fichier, p. ex. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  année, mois, jour séparément
+  <tt>[hms]</tt>      heure de modification, p. ex. 14-05-09
+  <tt>[P]</tt>        nom du dossier contenant le fichier
+
+<b>Exemples</b>
+  <tt>Vacances [C]</tt> avec 3 chiffres  →  Vacances 001.jpg, Vacances 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Plage.jpg
+  <tt>[N1-7]</tt>  →  ne garder que les 7 premiers caractères
+
+<b>Rechercher et remplacer</b> s’applique après le masque. « Expression régulière » permet des motifs avancés, mais ce n’est jamais nécessaire.
+
+L’ordre de la liste détermine le compteur. Déplacez les lignes avec la souris ou triez par nom ou par date.
+
+L’aperçu devient rouge si un nom apparaît deux fois ou existe déjà – rien n’est alors renommé.
+<b>Défaire</b> annule le dernier renommage, même après un redémarrage du programme.
+
+Clavier : <b>Ctrl+Entrée</b> renommer, <b>F1</b> aide, <b>Échap</b> fermer.

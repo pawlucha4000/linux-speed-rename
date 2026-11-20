@@ -1,0 +1,34 @@
+<b>Come funziona</b>
+
+In alto componi il nuovo nome con dei <b>blocchi</b>. Un clic su un pulsante inserisce il blocco nella posizione del cursore. Puoi anche scrivere normale testo attorno.
+
+<b>Nome file</b>
+  <tt>[N]</tt>        il vecchio nome (senza estensione)
+  <tt>[N2-5]</tt>     solo i caratteri da 2 a 5 del vecchio nome
+  <tt>[N3-]</tt>      dal carattere 3 fino alla fine
+  <tt>[N-4]</tt>      gli ultimi 4 caratteri
+  Il pulsante <b>[N#-#] Parte</b> apre una finestra in cui selezioni semplicemente la parte con il mouse.
+
+<b>Estensione</b>
+  <tt>[E]</tt>        la vecchia estensione (ad es. jpg). Campo vuoto = nessuna estensione.
+
+<b>Contatore, data, ora</b>
+  <tt>[C]</tt>        contatore – inizio, passo e cifre a destra
+  <tt>[YMD]</tt>      data di modifica del file, ad es. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  anno, mese, giorno separati
+  <tt>[hms]</tt>      ora di modifica, ad es. 14-05-09
+  <tt>[P]</tt>        nome della cartella che contiene il file
+
+<b>Esempi</b>
+  <tt>Vacanze [C]</tt> con 3 cifre  →  Vacanze 001.jpg, Vacanze 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Spiaggia.jpg
+  <tt>[N1-7]</tt>  →  mantieni solo i primi 7 caratteri
+
+<b>Cerca e sostituisci</b> viene applicato dopo la maschera. «Espressione regolare» consente schemi avanzati, ma non è mai necessaria.
+
+L’ordine dell’elenco determina il contatore. Trascina le righe con il mouse oppure ordina per nome o per data.
+
+L’anteprima diventa rossa se un nome compare due volte o esiste già: in quel caso non viene rinominato nulla.
+<b>Ripristina</b> annulla l’ultima rinomina, anche dopo il riavvio del programma.
+
+Tastiera: <b>Ctrl+Invio</b> rinomina, <b>F1</b> aiuto, <b>Esc</b> chiudi.

@@ -1,6 +1,6 @@
 #!/bin/sh
-# Installiert Mehrfach-Umbenennen für den aktuellen Benutzer (keine Root-Rechte nötig)
-# und macht es zum Umbenenn-Tool von Nemo (F2 bei mehreren markierten Dateien).
+# Installs Multi-Rename (Mehrfach-Umbenennen) for the current user (no root needed)
+# and makes it Nemo's bulk-rename tool (F2 with several files selected).
 set -eu
 
 SRC="$(cd "$(dirname "$0")" && pwd)"
@@ -10,7 +10,7 @@ BIN="$HOME/.local/bin"
 LAUNCHER="$BIN/mehrfach-umbenennen"
 
 python3 -c "import gi; gi.require_version('Gtk', '3.0')" 2>/dev/null || {
-    echo "Fehlt: python3-gi und GTK 3. Unter Ubuntu/Mint: sudo apt install python3-gi gir1.2-gtk-3.0" >&2
+    echo "Missing: python3-gi and GTK 3. On Ubuntu/Mint: sudo apt install python3-gi gir1.2-gtk-3.0" >&2
     exit 1
 }
 
@@ -28,14 +28,14 @@ chmod +x "$LAUNCHER"
 sed "s|@LAUNCHER@|$LAUNCHER|g" "$SRC/desktop/mehrfach-umbenennen.desktop" > "$DATA/applications/mehrfach-umbenennen.desktop"
 sed "s|@LAUNCHER@|$LAUNCHER|g" "$SRC/nemo/mehrfach-umbenennen.nemo_action" > "$DATA/nemo/actions/mehrfach-umbenennen.nemo_action"
 
-# F2 in Nemo auf dieses Tool umstellen (vorherigen Wert merken, damit uninstall.sh ihn zurücksetzt)
+# Point Nemo's F2 at this tool (remember the previous value so uninstall.sh can restore it)
 if gsettings list-keys org.nemo.preferences 2>/dev/null | grep -qx bulk-rename-tool; then
     PREV="$DATA/mehrfach-umbenennen/vorheriges-nemo-tool"
     CUR="$(gsettings get org.nemo.preferences bulk-rename-tool)"
     case "$CUR" in *mehrfach-umbenennen*) ;; *) printf '%s\n' "$CUR" > "$PREV" ;; esac
     gsettings set org.nemo.preferences bulk-rename-tool "b'$LAUNCHER'"
-    echo "Nemo: F2 bei mehreren Dateien öffnet jetzt Mehrfach-Umbenennen."
+    echo "Nemo: F2 with several files selected now opens Multi-Rename."
 fi
 
-echo "Installiert. Rechtsklick in Nemo → „Mehrfach umbenennen …“ oder F2 bei mehreren markierten Dateien."
-echo "Falls der Menüeintrag fehlt: Nemo einmal neu starten (nemo -q)."
+echo "Installed. In Nemo: right-click → \"Multi-rename …\" or press F2 with several files selected."
+echo "If the menu entry is missing, restart Nemo once: nemo -q"

@@ -22,7 +22,9 @@ import json
 import os
 import re
 import uuid
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+
+from .i18n import _
 
 TOKEN_RE = re.compile(
     r"\[(?:"
@@ -31,7 +33,7 @@ TOKEN_RE = re.compile(
     r")\]"
 )
 
-CASE_OPTIONS = ["Unverändert", "kleinbuchstaben", "GROSSBUCHSTABEN", "Erster Buchstabe groß", "Jedes Wort Groß"]
+CASE_OPTIONS = [_("Unchanged"), _("lowercase"), _("UPPERCASE"), _("First letter capital"), _("Each Word Capitalised")]
 
 
 @dataclass
@@ -148,7 +150,7 @@ def compute(paths: list[str], s: Settings) -> list[Entry]:
         try:
             re.compile(s.search)
         except re.error as exc:
-            return [Entry(p, os.path.basename(p), f"Regulärer Ausdruck fehlerhaft: {exc}") for p in paths]
+            return [Entry(p, os.path.basename(p), _("Invalid regular expression: {error}").format(error=exc)) for p in paths]
 
     entries: list[Entry] = []
     for i, path in enumerate(paths):
@@ -178,19 +180,19 @@ def _check_conflicts(entries: list[Entry]) -> None:
     for e in entries:
         name = e.new_name
         if not name.strip():
-            e.error = "Leerer Name"
+            e.error = _("Empty name")
         elif "/" in name or "\0" in name:
-            e.error = "Name enthält '/'"
+            e.error = _("Name contains '/'")
         elif name in (".", ".."):
-            e.error = "Ungültiger Name"
+            e.error = _("Invalid name")
         elif len(name.encode()) > 255:
-            e.error = "Name zu lang"
+            e.error = _("Name too long")
         target = os.path.abspath(e.new_path)
         key = target
         if key in seen and not e.error:
-            e.error = "Doppelter Name"
+            e.error = _("Duplicate name")
             if not seen[key].error:
-                seen[key].error = "Doppelter Name"
+                seen[key].error = _("Duplicate name")
         seen.setdefault(key, e)
         if not e.error and e.changed and os.path.lexists(target) and target not in sources:
             # Auf Laufwerken ohne Groß-/Kleinunterscheidung (FAT, NTFS) ist das Ziel
@@ -200,7 +202,7 @@ def _check_conflicts(entries: list[Entry]) -> None:
             except OSError:
                 same = False
             if not same:
-                e.error = "Datei existiert bereits"
+                e.error = _("File already exists")
 
 
 def has_errors(entries: list[Entry]) -> bool:
@@ -213,7 +215,7 @@ def execute(entries: list[Entry]) -> list[tuple[str, str]]:
     Gibt die Liste (alt, neu) der tatsächlich umbenannten Dateien zurück.
     """
     if has_errors(entries):
-        raise ValueError("Es gibt Konflikte, bitte erst beheben.")
+        raise ValueError(_("There are conflicts, please resolve them first."))
     todo = [e for e in entries if e.changed]
     staged: list[tuple[Entry, str]] = []
     done: list[tuple[str, str]] = []
@@ -225,7 +227,7 @@ def execute(entries: list[Entry]) -> list[tuple[str, str]]:
         while staged:
             e, tmp = staged[0]
             if os.path.lexists(e.new_path):
-                raise FileExistsError(f"Ziel existiert bereits: {e.new_path}")
+                raise FileExistsError(_("Target already exists: {path}").format(path=e.new_path))
             os.rename(tmp, e.new_path)
             staged.pop(0)
             done.append((e.path, e.new_path))

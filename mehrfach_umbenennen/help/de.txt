@@ -1,0 +1,34 @@
+<b>So funktioniert es</b>
+
+Oben baust du den neuen Namen aus <b>Bausteinen</b> zusammen. Klick auf einen Knopf fügt den Baustein an der Cursorposition ein. Du kannst auch ganz normal Text dazuschreiben.
+
+<b>Dateiname</b>
+  <tt>[N]</tt>        der alte Name (ohne Erweiterung)
+  <tt>[N2-5]</tt>     nur Zeichen 2 bis 5 des alten Namens
+  <tt>[N3-]</tt>      ab Zeichen 3 bis zum Ende
+  <tt>[N-4]</tt>      die letzten 4 Zeichen
+  Der Knopf <b>[N#-#] Teil</b> öffnet ein Fenster, in dem du den Teil einfach mit der Maus markierst.
+
+<b>Erweiterung</b>
+  <tt>[E]</tt>        die alte Erweiterung (z. B. jpg). Feld leer lassen = keine Erweiterung.
+
+<b>Zähler, Datum, Zeit</b>
+  <tt>[C]</tt>        laufender Zähler – Start, Schrittweite und Stellen rechts einstellen
+  <tt>[YMD]</tt>      Änderungsdatum der Datei, z. B. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  Jahr, Monat, Tag einzeln
+  <tt>[hms]</tt>      Änderungszeit, z. B. 14-05-09
+  <tt>[P]</tt>        Name des Ordners, in dem die Datei liegt
+
+<b>Beispiele</b>
+  <tt>2026-10 Foto [C]</tt> mit 3 Stellen  →  2026-10 Foto 001.jpg, 2026-10 Foto 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Urlaub.jpg
+  <tt>[N1-7]</tt>  →  nur die ersten 7 Zeichen behalten
+
+<b>Suchen &amp; Ersetzen</b> wird nach der Maske angewendet. Mit „Regulärer Ausdruck“ sind Profi-Muster möglich, nötig ist das aber nie.
+
+Die Reihenfolge der Liste bestimmt den Zähler. Du kannst Zeilen mit der Maus verschieben oder oben nach Name oder Datum sortieren.
+
+Die Vorschau zeigt rot, wenn ein Name doppelt vorkommt oder schon existiert – dann wird nichts umbenannt.
+<b>Rückgängig</b> macht die letzte Umbenennung wieder rückgängig, auch nach einem Neustart des Programms.
+
+Tastatur: <b>Strg+Enter</b> umbenennen, <b>F1</b> Hilfe, <b>Esc</b> schließen.

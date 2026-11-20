@@ -1,0 +1,34 @@
+<b>Jak to działa</b>
+
+U góry budujesz nową nazwę z <b>bloków</b>. Kliknięcie przycisku wstawia blok w miejscu kursora. Możesz też dopisać zwykły tekst.
+
+<b>Nazwa pliku</b>
+  <tt>[N]</tt>        stara nazwa (bez rozszerzenia)
+  <tt>[N2-5]</tt>     tylko znaki od 2 do 5 starej nazwy
+  <tt>[N3-]</tt>      od znaku 3 do końca
+  <tt>[N-4]</tt>      ostatnie 4 znaki
+  Przycisk <b>[N#-#] Część</b> otwiera okno, w którym po prostu zaznaczasz część myszą.
+
+<b>Rozszerzenie</b>
+  <tt>[E]</tt>        stare rozszerzenie (np. jpg). Puste pole = brak rozszerzenia.
+
+<b>Licznik, data, czas</b>
+  <tt>[C]</tt>        licznik – początek, krok i liczbę cyfr ustawiasz po prawej
+  <tt>[YMD]</tt>      data modyfikacji pliku, np. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  rok, miesiąc, dzień osobno
+  <tt>[hms]</tt>      czas modyfikacji, np. 14-05-09
+  <tt>[P]</tt>        nazwa folderu, w którym leży plik
+
+<b>Przykłady</b>
+  <tt>Wakacje [C]</tt> z 3 cyframi  →  Wakacje 001.jpg, Wakacje 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Plaża.jpg
+  <tt>[N1-7]</tt>  →  zachowaj tylko pierwsze 7 znaków
+
+<b>Znajdź i zamień</b> działa po zastosowaniu maski. „Wyrażenie regularne” pozwala na zaawansowane wzorce, ale nigdy nie jest konieczne.
+
+Kolejność listy określa licznik. Przeciągnij wiersze myszą albo posortuj według nazwy lub daty.
+
+Podgląd zmienia kolor na czerwony, jeśli nazwa się powtarza lub już istnieje – wtedy nic nie zostanie zmienione.
+<b>Cofnij</b> przywraca ostatnią zmianę nazw, także po ponownym uruchomieniu programu.
+
+Klawiatura: <b>Ctrl+Enter</b> zmień nazwy, <b>F1</b> pomoc, <b>Esc</b> zamknij.

@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mehrfach-umbenennen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mehrfach-umbenennen\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-21 00:39+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mehrfach_umbenennen/app.py:229
+msgid "3 digits gives 001, 002, 003 …"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:239 mehrfach_umbenennen/app.py:426
+msgid "Cancel"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:208
+msgid "Case:"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:425
+msgid "Choose files to rename"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:150 mehrfach_umbenennen/app.py:395
+msgid "Close"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:294
+#, python-brace-format
+msgid "Conflicts: {n} – please adjust the mask."
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:230
+msgid "Counter [C]"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:226
+msgid "Digits:"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:193 mehrfach_umbenennen/engine.py:195
+msgid "Duplicate name"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:36
+msgid "Each Word Capitalised"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:183
+msgid "Empty name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:235
+msgid "Example name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:94
+msgid "Extension"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:205
+msgid "File already exists"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:373
+#, python-brace-format
+msgid "Files renamed: {n}. “Undo” restores the old names."
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:384
+#, python-brace-format
+msgid "Files restored to their old names: {n}"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:296
+#, python-brace-format
+msgid "Files to be renamed: {n} of {total}"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:298
+#, python-brace-format
+msgid "Files: {total} – no changes yet"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:36
+msgid "First letter capital"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:122
+msgid "Folder"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:204
+msgid "For advanced users: treat the search text as a regular expression"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:143 mehrfach_umbenennen/app.py:394
+msgid "Help"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:239
+msgid "Insert"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:187
+msgid "Invalid name"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:153
+#, python-brace-format
+msgid "Invalid regular expression: {error}"
+msgstr ""
+
+#. noqa: E402
+#. noqa: E402
+#. noqa: E402
+#: mehrfach_umbenennen/app.py:19
+msgid "Multi-Rename"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:185
+msgid "Name contains '/'"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:189
+msgid "Name too long"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:85
+msgid "New file name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:121
+msgid "New name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:122
+msgid "Note"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:121
+msgid "Old name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:426
+msgid "Open"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:104
+msgid "Order (sets the counter):"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:202
+msgid "Regular expression"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:147
+msgid "Rename"
+msgstr ""
+
+#. noqa: BLE001
+#: mehrfach_umbenennen/app.py:365
+msgid "Renaming failed. Nothing was changed."
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:203
+msgid "Replace only the first occurrence"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:197
+msgid "Replace with:"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:110
+msgid "Reset all"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:214
+msgid "Search & Replace"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:195
+msgid "Search for:"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:238
+msgid "Select part"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:246
+msgid "Select the part you want to keep with the mouse:"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:225
+msgid "Start at:"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:225
+msgid "Step:"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:230
+#, python-brace-format
+msgid "Target already exists: {path}"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:218
+msgid "There are conflicts, please resolve them first."
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:36
+msgid "UPPERCASE"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:36
+msgid "Unchanged"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:145
+msgid "Undo"
+msgstr ""
+
+#. noqa: BLE001
+#: mehrfach_umbenennen/app.py:379
+msgid "Undo is not possible."
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:80 mehrfach_umbenennen/app.py:92
+msgid "[C] Counter"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:91
+msgid "[E#-#] Part"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:90
+msgid "[E] Extension"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:79
+msgid "[N#-#] Part"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:78
+msgid "[N] Name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:83
+msgid "[P] Folder"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:81
+msgid "[YMD] Date"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:82
+msgid "[hms] Time"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:201
+msgid "also in extension"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:105
+msgid "by date"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:105
+msgid "by name"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:251
+msgid "count from the end (the last characters)"
+msgstr ""
+
+#: mehrfach_umbenennen/engine.py:36
+msgid "lowercase"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:200
+msgid "only once"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:109
+msgid "or drag rows with the mouse"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:308
+msgid "unchanged"
+msgstr ""
+
+#: mehrfach_umbenennen/app.py:250
+msgid "up to the end (even if other names are longer)"
+msgstr ""

@@ -1,45 +1,46 @@
-# Mehrfach-Umbenennen
+# Multi-Rename (Mehrfach-Umbenennen)
 
-Viele Dateien auf einmal umbenennen – so einfach wie im Mehrfach-Umbenenn-Tool des Total Commanders.
-Für Linux-Desktops mit GTK, eingebunden in den Dateimanager **Nemo** (Linux Mint / Cinnamon).
+Rename many files at once – as easily as with the multi-rename tool of Total Commander.
+For GTK desktops on Linux, built into the **Nemo** file manager (Linux Mint / Cinnamon).
 
-*English summary: a Total-Commander-style multi-rename tool for Linux (GTK 3, Python). It plugs into Nemo as its bulk-rename tool (F2 with several files selected) and as a context-menu action. The UI is currently German.*
+*Deutsch: [README.de.md](README.de.md)*
 
-## Warum?
+## Why?
 
-Die üblichen Linux-Umbenenner sind entweder zu schlicht oder sehen aus wie ein Cockpit.
-Hier baust du den neuen Namen aus **Bausteinen** zusammen, die du per Klick einfügst – Programmierkenntnisse braucht man nicht:
+The usual Linux bulk renamers are either too basic or look like an aircraft cockpit.
+Here you build the new name from **building blocks** that you insert with a click – no programming knowledge needed:
 
-| Baustein | Bedeutung | Beispiel aus `IMG_0042.jpg` |
+| Block | Meaning | Example for `IMG_0042.jpg` |
 |---|---|---|
-| `[N]` | alter Name ohne Erweiterung | `IMG_0042` |
-| `[N5-8]` | Zeichen 5 bis 8 des alten Namens | `0042` |
-| `[N3-]` / `[N-4]` | ab Zeichen 3 / die letzten 4 Zeichen | `G_0042` / `0042` |
-| `[E]` | Erweiterung | `jpg` |
-| `[C]` | laufender Zähler (Start, Schritt, Stellen einstellbar) | `001` |
-| `[YMD]` | Änderungsdatum | `2026-10-03` |
-| `[Y]` `[M]` `[D]` | Jahr, Monat, Tag | `2026` `10` `03` |
-| `[hms]` | Änderungszeit | `14-05-09` |
-| `[P]` | Name des Ordners | `Urlaub` |
+| `[N]` | old name without extension | `IMG_0042` |
+| `[N5-8]` | characters 5 to 8 of the old name | `0042` |
+| `[N3-]` / `[N-4]` | from character 3 / the last 4 characters | `G_0042` / `0042` |
+| `[E]` | extension | `jpg` |
+| `[C]` | running counter (start, step, digits adjustable) | `001` |
+| `[YMD]` | modification date | `2026-10-03` |
+| `[Y]` `[M]` `[D]` | year, month, day | `2026` `10` `03` |
+| `[hms]` | modification time | `14-05-09` |
+| `[P]` | name of the folder | `Holiday` |
 
-**Beispiel:** Maske `2026-10 Foto [C]`, Zähler mit 3 Stellen → `2026-10 Foto 001.jpg`, `2026-10 Foto 002.jpg`, …
+**Example:** mask `2026-10 Photo [C]`, counter with 3 digits → `2026-10 Photo 001.jpg`, `2026-10 Photo 002.jpg`, …
 
-Außerdem:
+Also:
 
-- **Live-Vorschau** aller neuen Namen, Konflikte (doppelte oder schon vorhandene Namen) werden rot markiert – dann wird nichts umbenannt.
-- **Teil auswählen** per Maus: Der Knopf „[N#-#] Teil“ zeigt den Namen der ersten Datei, du markierst einfach den Teil, den du behalten willst.
-- **Suchen & Ersetzen**, optional nur einmal, mit Erweiterung oder als regulärer Ausdruck.
-- **Groß-/Kleinschreibung** ändern.
-- **Reihenfolge** (bestimmt den Zähler): nach Name oder Datum sortieren oder Zeilen mit der Maus verschieben.
-- **Verlauf**: zuletzt verwendete Masken im Pulldown.
-- **Rückgängig** – auch nach einem Neustart.
-- Sicher: Umbenannt wird zweistufig über temporäre Namen, Tausch (A↔B) klappt, bei einem Fehler wird alles zurückgerollt.
+- **Live preview** of all new names. Conflicts (duplicate or already existing names) are shown in red – then nothing is renamed.
+- **Select a part with the mouse:** the “[N#-#] Part” button shows the first file name, you simply select the part you want to keep.
+- **Search & Replace**, optionally only once, including the extension, or as a regular expression.
+- **Change case** (lower, UPPER, Title …).
+- **Order** (sets the counter): sort by name or date, or drag rows with the mouse.
+- **History:** recently used masks in the drop-down.
+- **Undo** – even after restarting the program.
+- **Safe:** renaming happens in two steps via temporary names, so swapping names (A↔B) works, and on any error everything is rolled back.
+- **Languages:** English, German, French, Spanish, Italian, Dutch, Polish, Portuguese – picked automatically from the system language.
 
-Tastatur: `Strg+Enter` umbenennen, `F1` Hilfe, `Esc` schließen.
+Keyboard: `Ctrl+Enter` rename, `F1` help, `Esc` close.
 
 ## Installation
 
-Benötigt Python 3 und GTK 3 (auf Linux Mint vorinstalliert, sonst `sudo apt install python3-gi gir1.2-gtk-3.0`).
+Requires Python 3 and GTK 3 (pre-installed on Linux Mint; otherwise `sudo apt install python3-gi gir1.2-gtk-3.0`).
 
 ```sh
 git clone <repo-url> mehrfach-umbenennen
@@ -47,26 +48,71 @@ cd mehrfach-umbenennen
 ./install.sh
 ```
 
-Das installiert nur für deinen Benutzer (nach `~/.local`), ohne Root-Rechte, und
+The installer works for your user only (into `~/.local`), needs no root rights, and **integrates the tool into Nemo automatically**:
 
-- stellt Nemo so ein, dass **F2 bei mehreren markierten Dateien** dieses Tool öffnet (`org.nemo.preferences bulk-rename-tool`),
-- fügt im Rechtsklick-Menü von Nemo **„Mehrfach umbenennen …“** hinzu,
-- legt einen Startmenü-Eintrag an.
+1. **F2 with several files selected** opens Multi-Rename (Nemo setting `bulk-rename-tool`; the previous value is saved).
+2. **Right-click menu** gets the entry “Multi-rename …”.
+3. A **start menu entry** is created.
 
-Entfernen: `./uninstall.sh` – stellt auch Nemos vorheriges Umbenenn-Tool wieder her.
+If the right-click entry does not show up straight away, restart Nemo once: `nemo -q`.
 
-Ohne Installation ausprobieren: `python3 -m mehrfach_umbenennen DATEI …`
+### Uninstall
 
-## Entwicklung
+```sh
+./uninstall.sh
+```
 
-Die Umbenenn-Logik steckt ohne GUI in `mehrfach_umbenennen/engine.py`, die Oberfläche in `app.py`.
+This also restores Nemo's previous rename tool. Your settings in `~/.config/mehrfach-umbenennen` stay.
+
+### Manual integration into Nemo (optional)
+
+`install.sh` does this for you. If you want to do it by hand, or use the tool from another location:
+
+```sh
+# F2 with several files selected
+gsettings set org.nemo.preferences bulk-rename-tool "b'/path/to/mehrfach-umbenennen'"
+
+# back to the previous tool (e.g. on Linux Mint 22)
+gsettings reset org.nemo.preferences bulk-rename-tool
+```
+
+For the right-click entry, copy `nemo/mehrfach-umbenennen.nemo_action` to `~/.local/share/nemo/actions/` and replace `@LAUNCHER@` with the path to the program.
+
+### Try without installing
+
+```sh
+python3 -m mehrfach_umbenennen FILE …
+```
+
+## Languages
+
+The language follows the desktop's system language (`LANGUAGE`, `LC_ALL`, `LC_MESSAGES`, `LANG`). If there is no translation, British English is used.
+To test another language: `MEHRFACH_UMBENENNEN_LANG=fr python3 -m mehrfach_umbenennen FILE …`
+
+The initial translations were machine-assisted. **Corrections by native speakers are very welcome.**
+
+### Adding or improving a translation
+
+Texts are in standard gettext files – any `.po` editor (e.g. Poedit) works:
+
+1. Copy `mehrfach_umbenennen/locale/messages.pot` to `mehrfach_umbenennen/locale/<code>.po` (e.g. `sv.po`) and translate it.
+2. Translate the help text `mehrfach_umbenennen/help/en.txt` into `help/<code>.txt`.
+3. Add `Name[<code>]` / `Comment[<code>]` lines to `nemo/*.nemo_action` and `desktop/*.desktop`.
+4. Run the tests – they check that every text is translated and placeholders like `{n}` are kept.
+
+No compilation step is needed; the program reads the `.po` files directly.
+
+## Development
+
+The renaming logic lives without any GUI in `mehrfach_umbenennen/engine.py`, the window in `app.py`, translations in `i18n.py`.
 
 ```sh
 python3 -m unittest discover -s tests -v
+tools/update-translations.sh   # after changing texts in the code
 ```
 
-Ideen und Fehlerberichte sind willkommen.
+Ideas and bug reports are welcome.
 
-## Lizenz
+## Licence
 
-MIT – siehe [LICENSE](LICENSE).
+MIT – see [LICENSE](LICENSE).

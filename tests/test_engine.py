@@ -74,7 +74,7 @@ class ComputeTest(unittest.TestCase):
         open(os.path.join(self.d, "fremd.JPG"), "w").close()
         s = E.Settings(name_mask="fremd")
         entries = E.compute(self.files[:1], s)
-        self.assertEqual(entries[0].error, "Datei existiert bereits")
+        self.assertEqual(entries[0].error, E._("File already exists"))
 
     def test_execute_swap_and_undo(self):
         # Tausch: 0001 <-> 0002 geht nur über temporäre Namen

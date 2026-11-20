@@ -1,0 +1,34 @@
+<b>How it works</b>
+
+At the top you build the new name from <b>building blocks</b>. Clicking a button inserts the block at the cursor position. You can also type ordinary text around it.
+
+<b>File name</b>
+  <tt>[N]</tt>        the old name (without extension)
+  <tt>[N2-5]</tt>     only characters 2 to 5 of the old name
+  <tt>[N3-]</tt>      from character 3 to the end
+  <tt>[N-4]</tt>      the last 4 characters
+  The <b>[N#-#] Part</b> button opens a window where you simply select the part with the mouse.
+
+<b>Extension</b>
+  <tt>[E]</tt>        the old extension (e.g. jpg). Leave the field empty = no extension.
+
+<b>Counter, date, time</b>
+  <tt>[C]</tt>        running counter – set start, step and digits on the right
+  <tt>[YMD]</tt>      the file's modification date, e.g. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  year, month, day on their own
+  <tt>[hms]</tt>      modification time, e.g. 14-05-09
+  <tt>[P]</tt>        name of the folder the file is in
+
+<b>Examples</b>
+  <tt>Holiday [C]</tt> with 3 digits  →  Holiday 001.jpg, Holiday 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Beach.jpg
+  <tt>[N1-7]</tt>  →  keep only the first 7 characters
+
+<b>Search &amp; Replace</b> is applied after the mask. “Regular expression” allows advanced patterns, but you never need it.
+
+The order of the list sets the counter. Drag rows with the mouse or sort by name or date above.
+
+The preview turns red if a name occurs twice or already exists – then nothing is renamed.
+<b>Undo</b> reverts the last renaming, even after restarting the program.
+
+Keyboard: <b>Ctrl+Enter</b> rename, <b>F1</b> help, <b>Esc</b> close.

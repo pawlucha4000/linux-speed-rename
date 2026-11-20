@@ -1,0 +1,34 @@
+<b>Cómo funciona</b>
+
+Arriba construye el nuevo nombre con <b>bloques</b>. Al hacer clic en un botón, el bloque se inserta en la posición del cursor. También puede escribir texto normal alrededor.
+
+<b>Nombre de archivo</b>
+  <tt>[N]</tt>        el nombre anterior (sin extensión)
+  <tt>[N2-5]</tt>     solo los caracteres 2 a 5 del nombre anterior
+  <tt>[N3-]</tt>      desde el carácter 3 hasta el final
+  <tt>[N-4]</tt>      los 4 últimos caracteres
+  El botón <b>[N#-#] Parte</b> abre una ventana en la que simplemente selecciona la parte con el ratón.
+
+<b>Extensión</b>
+  <tt>[E]</tt>        la extensión anterior (p. ej. jpg). Campo vacío = sin extensión.
+
+<b>Contador, fecha, hora</b>
+  <tt>[C]</tt>        contador – inicio, incremento y dígitos a la derecha
+  <tt>[YMD]</tt>      fecha de modificación del archivo, p. ej. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  año, mes y día por separado
+  <tt>[hms]</tt>      hora de modificación, p. ej. 14-05-09
+  <tt>[P]</tt>        nombre de la carpeta que contiene el archivo
+
+<b>Ejemplos</b>
+  <tt>Vacaciones [C]</tt> con 3 dígitos  →  Vacaciones 001.jpg, Vacaciones 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Playa.jpg
+  <tt>[N1-7]</tt>  →  conservar solo los 7 primeros caracteres
+
+<b>Buscar y reemplazar</b> se aplica después de la máscara. «Expresión regular» permite patrones avanzados, pero nunca es necesaria.
+
+El orden de la lista determina el contador. Arrastre las filas con el ratón u ordene por nombre o fecha.
+
+La vista previa se marca en rojo si un nombre aparece dos veces o ya existe; en ese caso no se renombra nada.
+<b>Deshacer</b> revierte el último renombrado, incluso después de reiniciar el programa.
+
+Teclado: <b>Ctrl+Intro</b> renombrar, <b>F1</b> ayuda, <b>Esc</b> cerrar.

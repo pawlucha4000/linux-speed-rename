@@ -1,0 +1,34 @@
+<b>Zo werkt het</b>
+
+Bovenaan stel je de nieuwe naam samen uit <b>bouwstenen</b>. Een klik op een knop voegt de bouwsteen in op de cursorpositie. Je kunt er ook gewoon tekst omheen typen.
+
+<b>Bestandsnaam</b>
+  <tt>[N]</tt>        de oude naam (zonder extensie)
+  <tt>[N2-5]</tt>     alleen tekens 2 tot en met 5 van de oude naam
+  <tt>[N3-]</tt>      vanaf teken 3 tot het einde
+  <tt>[N-4]</tt>      de laatste 4 tekens
+  De knop <b>[N#-#] Deel</b> opent een venster waarin je het deel gewoon met de muis selecteert.
+
+<b>Extensie</b>
+  <tt>[E]</tt>        de oude extensie (bijv. jpg). Veld leeg = geen extensie.
+
+<b>Teller, datum, tijd</b>
+  <tt>[C]</tt>        doorlopende teller – start, stapgrootte en cijfers rechts instellen
+  <tt>[YMD]</tt>      wijzigingsdatum van het bestand, bijv. 2026-10-03
+  <tt>[Y] [M] [D]</tt>  jaar, maand, dag apart
+  <tt>[hms]</tt>      wijzigingstijd, bijv. 14-05-09
+  <tt>[P]</tt>        naam van de map waarin het bestand staat
+
+<b>Voorbeelden</b>
+  <tt>Vakantie [C]</tt> met 3 cijfers  →  Vakantie 001.jpg, Vakantie 002.jpg …
+  <tt>[YMD] [N]</tt>  →  2026-10-03 Strand.jpg
+  <tt>[N1-7]</tt>  →  alleen de eerste 7 tekens behouden
+
+<b>Zoeken en vervangen</b> wordt na het masker toegepast. Met ‘Reguliere expressie’ zijn geavanceerde patronen mogelijk, maar nodig is dat nooit.
+
+De volgorde van de lijst bepaalt de teller. Sleep rijen met de muis of sorteer op naam of datum.
+
+De voorbeeldweergave wordt rood als een naam dubbel voorkomt of al bestaat – dan wordt er niets hernoemd.
+<b>Ongedaan maken</b> draait de laatste hernoeming terug, ook na een herstart van het programma.
+
+Toetsenbord: <b>Ctrl+Enter</b> hernoemen, <b>F1</b> help, <b>Esc</b> sluiten.

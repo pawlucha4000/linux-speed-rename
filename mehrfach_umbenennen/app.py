@@ -1,4 +1,4 @@
-"""Mehrfach-Umbenennen – GTK-Fenster im Stil des Total-Commander-Umbenenn-Tools."""
+"""Multi-Rename – GTK window in the style of Total Commander's multi-rename tool."""
 
 from __future__ import annotations
 
@@ -14,41 +14,9 @@ gi.require_version("Gdk", "3.0")
 from gi.repository import Gdk, GLib, Gtk, Pango  # noqa: E402
 
 from . import engine as E  # noqa: E402
+from .i18n import _, help_text  # noqa: E402
 
-APP_TITLE = "Mehrfach-Umbenennen"
-
-HELP_TEXT = """<b>So funktioniert es</b>
-
-Oben baust du den neuen Namen aus <b>Bausteinen</b> zusammen. Klick auf einen Knopf fügt den Baustein an der Cursorposition ein. Du kannst auch ganz normal Text dazuschreiben.
-
-<b>Dateiname</b>
-  <tt>[N]</tt>        der alte Name (ohne Erweiterung)
-  <tt>[N2-5]</tt>     nur Zeichen 2 bis 5 des alten Namens
-  <tt>[N3-]</tt>      ab Zeichen 3 bis zum Ende
-  <tt>[N-4]</tt>      die letzten 4 Zeichen
-  Der Knopf <b>[N#-#] Teil</b> öffnet ein Fenster, in dem du den Teil einfach mit der Maus markierst.
-
-<b>Erweiterung</b>
-  <tt>[E]</tt>        die alte Erweiterung (z. B. jpg). Feld leer lassen = keine Erweiterung.
-
-<b>Zähler, Datum, Zeit</b>
-  <tt>[C]</tt>        laufender Zähler – Start, Schrittweite und Stellen rechts einstellen
-  <tt>[YMD]</tt>      Änderungsdatum der Datei, z. B. 2026-10-03
-  <tt>[Y] [M] [D]</tt>  Jahr, Monat, Tag einzeln
-  <tt>[hms]</tt>      Änderungszeit, z. B. 14-05-09
-  <tt>[P]</tt>        Name des Ordners, in dem die Datei liegt
-
-<b>Beispiele</b>
-  <tt>2026-10 Foto [C]</tt>  mit 3 Stellen  →  2026-10 Foto 001.jpg, 2026-10 Foto 002.jpg …
-  <tt>[YMD] [N]</tt>                       →  2026-10-03 Urlaub.jpg
-  <tt>[N1-7]</tt>                          →  nur die ersten 7 Zeichen behalten
-
-<b>Suchen &amp; Ersetzen</b> wird nach der Maske angewendet. Mit „Regulärer Ausdruck“ sind Profi-Muster möglich, nötig ist das aber nie.
-
-Die Reihenfolge der Liste bestimmt den Zähler. Du kannst Zeilen mit der Maus verschieben oder oben nach Name oder Datum sortieren.
-
-Die Vorschau zeigt rot, wenn ein Name doppelt vorkommt oder schon existiert – dann wird nichts umbenannt.
-<b>Rückgängig</b> macht die letzte Umbenennung wieder rückgängig, auch nach einem Neustart des Programms."""
+APP_TITLE = _("Multi-Rename")
 
 
 def _natural_key(s: str):
@@ -107,23 +75,23 @@ class RenameWindow(Gtk.Window):
         # --- Dateiname ---
         self.name = MaskField(self.cfg.get("name_mask", []), "[N]")
         name_buttons = [
-            ("[N] Name", lambda *_: self.name.insert("[N]")),
-            ("[N#-#] Teil", lambda *_: self._pick_part("N", self.name)),
-            ("[C] Zähler", lambda *_: self.name.insert("[C]")),
-            ("[YMD] Datum", lambda *_: self.name.insert("[YMD]")),
-            ("[hms] Zeit", lambda *_: self.name.insert("[hms]")),
-            ("[P] Ordner", lambda *_: self.name.insert("[P]")),
+            (_("[N] Name"), lambda *_: self.name.insert("[N]")),
+            (_("[N#-#] Part"), lambda *_: self._pick_part("N", self.name)),
+            (_("[C] Counter"), lambda *_: self.name.insert("[C]")),
+            (_("[YMD] Date"), lambda *_: self.name.insert("[YMD]")),
+            (_("[hms] Time"), lambda *_: self.name.insert("[hms]")),
+            (_("[P] Folder"), lambda *_: self.name.insert("[P]")),
         ]
-        top.pack_start(self._mask_frame("Neuer Dateiname", self.name, name_buttons, 2), True, True, 0)
+        top.pack_start(self._mask_frame(_("New file name"), self.name, name_buttons, 2), True, True, 0)
 
         # --- Erweiterung ---
         self.ext = MaskField(self.cfg.get("ext_mask", []), "[E]")
         ext_buttons = [
-            ("[E] Erweiterung", lambda *_: self.ext.insert("[E]")),
-            ("[E#-#] Teil", lambda *_: self._pick_part("E", self.ext)),
-            ("[C] Zähler", lambda *_: self.ext.insert("[C]")),
+            (_("[E] Extension"), lambda *_: self.ext.insert("[E]")),
+            (_("[E#-#] Part"), lambda *_: self._pick_part("E", self.ext)),
+            (_("[C] Counter"), lambda *_: self.ext.insert("[C]")),
         ]
-        top.pack_start(self._mask_frame("Erweiterung", self.ext, ext_buttons, 1), False, False, 0)
+        top.pack_start(self._mask_frame(_("Extension"), self.ext, ext_buttons, 1), False, False, 0)
 
         # --- Suchen & Ersetzen ---
         top.pack_start(self._search_frame(), True, True, 0)
@@ -133,13 +101,13 @@ class RenameWindow(Gtk.Window):
 
         # --- Sortierung ---
         sortbar = Gtk.Box(spacing=6)
-        sortbar.pack_start(Gtk.Label(label="Reihenfolge (bestimmt den Zähler):"), False, False, 0)
-        for label, key in (("nach Name", "name"), ("nach Datum", "date")):
+        sortbar.pack_start(Gtk.Label(label=_("Order (sets the counter):")), False, False, 0)
+        for label, key in ((_("by name"), "name"), (_("by date"), "date")):
             b = Gtk.Button(label=label)
             b.connect("clicked", self._sort, key)
             sortbar.pack_start(b, False, False, 0)
-        sortbar.pack_start(Gtk.Label(label="oder Zeilen mit der Maus verschieben"), False, False, 0)
-        reset = Gtk.Button(label="Alles zurücksetzen")
+        sortbar.pack_start(Gtk.Label(label=_("or drag rows with the mouse")), False, False, 0)
+        reset = Gtk.Button(label=_("Reset all"))
         reset.connect("clicked", self._reset)
         sortbar.pack_end(reset, False, False, 0)
         outer.pack_start(sortbar, False, False, 0)
@@ -150,8 +118,8 @@ class RenameWindow(Gtk.Window):
         self.view.set_reorderable(True)
         self.store.connect("rows-reordered", lambda *_: self._on_reorder())
         self.store.connect("row-deleted", lambda *_: self._on_reorder())
-        for title, col, width in (("Alter Name", self.COL_OLD, 300), ("Neuer Name", self.COL_NEW, 300),
-                                  ("Hinweis", self.COL_NOTE, 170), ("Ordner", self.COL_DIR, 220)):
+        for title, col, width in ((_("Old name"), self.COL_OLD, 300), (_("New name"), self.COL_NEW, 300),
+                                  (_("Note"), self.COL_NOTE, 170), (_("Folder"), self.COL_DIR, 220)):
             r = Gtk.CellRendererText()
             if col != self.COL_NOTE:
                 r.set_property("ellipsize", Pango.EllipsizeMode.START if col == self.COL_DIR
@@ -172,14 +140,14 @@ class RenameWindow(Gtk.Window):
         self.status = Gtk.Label(xalign=0)
         self.status.set_ellipsize(Pango.EllipsizeMode.END)
         bottom.pack_start(self.status, True, True, 0)
-        help_btn = Gtk.Button(label="Hilfe")
+        help_btn = Gtk.Button(label=_("Help"))
         help_btn.connect("clicked", self._show_help)
-        self.undo_btn = Gtk.Button(label="Rückgängig")
+        self.undo_btn = Gtk.Button(label=_("Undo"))
         self.undo_btn.connect("clicked", self._undo)
-        self.start_btn = Gtk.Button(label="Umbenennen")
+        self.start_btn = Gtk.Button(label=_("Rename"))
         self.start_btn.get_style_context().add_class("suggested-action")
         self.start_btn.connect("clicked", self._start)
-        close_btn = Gtk.Button(label="Schließen")
+        close_btn = Gtk.Button(label=_("Close"))
         close_btn.connect("clicked", lambda *_: self.close())
         for b in (help_btn, self.undo_btn, self.start_btn, close_btn):
             bottom.pack_start(b, False, False, 0)
@@ -224,26 +192,26 @@ class RenameWindow(Gtk.Window):
         self.search = MaskField(self.cfg.get("search", []), "")
         self.replace = MaskField(self.cfg.get("replace", []), "")
         self.search.combo.set_hexpand(True)
-        grid.attach(Gtk.Label(label="Suchen nach:", xalign=0), 0, 0, 1, 1)
+        grid.attach(Gtk.Label(label=_("Search for:"), xalign=0), 0, 0, 1, 1)
         grid.attach(self.search.combo, 1, 0, 1, 1)
-        grid.attach(Gtk.Label(label="Ersetzen durch:", xalign=0), 0, 1, 1, 1)
+        grid.attach(Gtk.Label(label=_("Replace with:"), xalign=0), 0, 1, 1, 1)
         grid.attach(self.replace.combo, 1, 1, 1, 1)
         opts = Gtk.Box(spacing=10)
-        self.once = Gtk.CheckButton(label="nur 1×")
-        self.include_ext = Gtk.CheckButton(label="auch in Erweiterung")
-        self.regex = Gtk.CheckButton(label="Regulärer Ausdruck")
-        self.once.set_tooltip_text("Nur das erste Vorkommen ersetzen")
-        self.regex.set_tooltip_text("Für Fortgeschrittene: Suchmuster als regulären Ausdruck auswerten")
+        self.once = Gtk.CheckButton(label=_("only once"))
+        self.include_ext = Gtk.CheckButton(label=_("also in extension"))
+        self.regex = Gtk.CheckButton(label=_("Regular expression"))
+        self.once.set_tooltip_text(_("Replace only the first occurrence"))
+        self.regex.set_tooltip_text(_("For advanced users: treat the search text as a regular expression"))
         for w in (self.once, self.include_ext, self.regex):
             opts.pack_start(w, False, False, 0)
         grid.attach(opts, 0, 2, 2, 1)
-        grid.attach(Gtk.Label(label="Groß/klein:", xalign=0), 0, 3, 1, 1)
+        grid.attach(Gtk.Label(label=_("Case:"), xalign=0), 0, 3, 1, 1)
         self.case = Gtk.ComboBoxText()
         for opt in E.CASE_OPTIONS:
             self.case.append_text(opt)
         self.case.set_active(0)
         grid.attach(self.case, 1, 3, 1, 1)
-        return self._frame("Suchen & Ersetzen", grid)
+        return self._frame(_("Search & Replace"), grid)
 
     def _counter_frame(self) -> Gtk.Frame:
         grid = Gtk.Grid(column_spacing=6, row_spacing=6)
@@ -254,33 +222,33 @@ class RenameWindow(Gtk.Window):
         self.c_start.set_value(c.get("start", 1))
         self.c_step.set_value(c.get("step", 1))
         self.c_digits.set_value(c.get("digits", 1))
-        for row, (label, w) in enumerate((("Starten bei:", self.c_start), ("Schrittweite:", self.c_step),
-                                          ("Stellen:", self.c_digits))):
+        for row, (label, w) in enumerate(((_("Start at:"), self.c_start), (_("Step:"), self.c_step),
+                                          (_("Digits:"), self.c_digits))):
             grid.attach(Gtk.Label(label=label, xalign=0), 0, row, 1, 1)
             grid.attach(w, 1, row, 1, 1)
-        self.c_digits.set_tooltip_text("3 Stellen ergibt 001, 002, 003 …")
-        return self._frame("Zähler [C]", grid)
+        self.c_digits.set_tooltip_text(_("3 digits gives 001, 002, 003 …"))
+        return self._frame(_("Counter [C]"), grid)
 
     # ---------- Aktionen ----------
 
     def _pick_part(self, which: str, field: MaskField) -> None:
-        sample = os.path.basename(self.paths[0]) if self.paths else "Beispielname.txt"
+        sample = os.path.basename(self.paths[0]) if self.paths else _("Example name") + ".txt"
         base, ext = E.split_name(sample)
         text = base if which == "N" else ext
-        dlg = Gtk.Dialog(title="Teil auswählen", transient_for=self, modal=True)
-        dlg.add_buttons("Abbrechen", Gtk.ResponseType.CANCEL, "Einfügen", Gtk.ResponseType.OK)
+        dlg = Gtk.Dialog(title=_("Select part"), transient_for=self, modal=True)
+        dlg.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Insert"), Gtk.ResponseType.OK)
         dlg.set_default_response(Gtk.ResponseType.OK)
         box = dlg.get_content_area()
         box.set_spacing(8)
         box.set_margin_start(12)
         box.set_margin_end(12)
         box.set_margin_top(12)
-        box.add(Gtk.Label(label="Markiere mit der Maus den Teil, den du behalten willst:", xalign=0))
+        box.add(Gtk.Label(label=_("Select the part you want to keep with the mouse:"), xalign=0))
         entry = Gtk.Entry(text=text, editable=False, width_chars=max(len(text), 30))
         entry.set_activates_default(True)
         box.add(entry)
-        to_end = Gtk.CheckButton(label="bis zum Ende (auch wenn andere Namen länger sind)")
-        from_right = Gtk.CheckButton(label="von hinten zählen (die letzten Zeichen)")
+        to_end = Gtk.CheckButton(label=_("up to the end (even if other names are longer)"))
+        from_right = Gtk.CheckButton(label=_("count from the end (the last characters)"))
         box.add(to_end)
         box.add(from_right)
         dlg.show_all()
@@ -322,11 +290,12 @@ class RenameWindow(Gtk.Window):
         n_err = sum(1 for e in self.entries if e.error)
         n_chg = sum(1 for e in self.entries if e.changed and not e.error)
         if n_err:
-            self.status.set_markup(f"<span foreground='#c01c28'>{n_err} Konflikt(e) – bitte Maske anpassen.</span>")
+            self.status.set_markup("<span foreground='#c01c28'>%s</span>" % GLib.markup_escape_text(
+                _("Conflicts: {n} – please adjust the mask.").format(n=n_err)))
         elif n_chg:
-            self.status.set_text(f"{n_chg} von {len(self.entries)} Dateien werden umbenannt.")
+            self.status.set_text(_("Files to be renamed: {n} of {total}").format(n=n_chg, total=len(self.entries)))
         else:
-            self.status.set_text(f"{len(self.entries)} Dateien – noch keine Änderung.")
+            self.status.set_text(_("Files: {total} – no changes yet").format(total=len(self.entries)))
         self.start_btn.set_sensitive(n_chg > 0 and not n_err)
         self.undo_btn.set_sensitive(bool(E.load_journal()))
         return False
@@ -336,7 +305,7 @@ class RenameWindow(Gtk.Window):
         self.store.clear()
         for e in self.entries:
             color = "#c01c28" if e.error else None
-            note = e.error or ("" if e.changed else "unverändert")
+            note = e.error or ("" if e.changed else _("unchanged"))
             self.store.append([e.old_name, e.new_name, note, e.directory, e.path, color])
         self._filling = False
 
@@ -393,7 +362,7 @@ class RenameWindow(Gtk.Window):
         try:
             done = E.execute(self.entries)
         except Exception as exc:  # noqa: BLE001
-            self._error("Umbenennen fehlgeschlagen. Es wurde nichts geändert.", str(exc))
+            self._error(_("Renaming failed. Nothing was changed."), str(exc))
             self._refresh()
             return
         E.save_journal(done)
@@ -401,18 +370,18 @@ class RenameWindow(Gtk.Window):
         mapping = dict(done)
         self.paths = [mapping.get(p, p) for p in self.paths]
         self._refresh()
-        self.status.set_text(f"{len(done)} Dateien umbenannt. „Rückgängig“ stellt die alten Namen wieder her.")
+        self.status.set_text(_("Files renamed: {n}. “Undo” restores the old names.").format(n=len(done)))
 
     def _undo(self, *_):
         try:
             reverted = E.undo_last()
         except Exception as exc:  # noqa: BLE001
-            self._error("Rückgängig machen nicht möglich.", str(exc))
+            self._error(_("Undo is not possible."), str(exc))
             return
         mapping = dict(reverted)
         self.paths = [mapping.get(p, p) for p in self.paths]
         self._refresh()
-        self.status.set_text(f"{len(reverted)} Dateien zurückbenannt.")
+        self.status.set_text(_("Files restored to their old names: {n}").format(n=len(reverted)))
 
     def _error(self, title: str, detail: str):
         dlg = Gtk.MessageDialog(transient_for=self, modal=True, message_type=Gtk.MessageType.ERROR,
@@ -422,11 +391,11 @@ class RenameWindow(Gtk.Window):
         dlg.destroy()
 
     def _show_help(self, *_):
-        dlg = Gtk.Dialog(title="Hilfe – " + APP_TITLE, transient_for=self, modal=True)
-        dlg.add_button("Schließen", Gtk.ResponseType.CLOSE)
+        dlg = Gtk.Dialog(title=_("Help") + " – " + APP_TITLE, transient_for=self, modal=True)
+        dlg.add_button(_("Close"), Gtk.ResponseType.CLOSE)
         dlg.set_default_size(620, 560)
         label = Gtk.Label(xalign=0, yalign=0, wrap=True, selectable=True)
-        label.set_markup(HELP_TEXT)
+        label.set_markup(help_text())
         sw = Gtk.ScrolledWindow(margin=12)
         sw.add(label)
         dlg.get_content_area().pack_start(sw, True, True, 0)
@@ -453,8 +422,8 @@ def main(argv: list[str] | None = None) -> int:
     paths = [_to_path(a) for a in args if a and not a.startswith("--")]
     paths = [p for p in dict.fromkeys(paths) if os.path.lexists(p)]
     if not paths:
-        dlg = Gtk.FileChooserDialog(title="Dateien zum Umbenennen wählen", action=Gtk.FileChooserAction.OPEN)
-        dlg.add_buttons("Abbrechen", Gtk.ResponseType.CANCEL, "Öffnen", Gtk.ResponseType.OK)
+        dlg = Gtk.FileChooserDialog(title=_("Choose files to rename"), action=Gtk.FileChooserAction.OPEN)
+        dlg.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Open"), Gtk.ResponseType.OK)
         dlg.set_select_multiple(True)
         if dlg.run() == Gtk.ResponseType.OK:
             paths = dlg.get_filenames()
