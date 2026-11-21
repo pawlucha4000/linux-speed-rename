@@ -19,5 +19,6 @@ Comment[pt]=Renomear muitos arquivos de uma vez com blocos como no Total Command
 Exec=@LAUNCHER@ %F
 Icon=edit-find-replace
 Terminal=false
+MimeType=text/plain;application/octet-stream;application/pdf;image/jpeg;image/png;image/gif;image/webp;audio/mpeg;video/mp4;application/zip;application/vnd.oasis.opendocument.text;application/vnd.openxmlformats-officedocument.wordprocessingml.document;
 Categories=GTK;Utility;FileTools;
 Keywords=rename;bulk;batch;umbenennen;renommer;renombrar;rinomina;hernoemen;zmiana nazw;renomear;
