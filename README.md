@@ -1,7 +1,7 @@
 # Linux Speed Rename
 
 A clear, intuitive tool for renaming a handful or a great many files that blends seamlessly into the Linux desktop.
-Designed as a user-friendly integration for the Linux file manager **Nemo** (Linux Mint / Cinnamon) – inspired by the multi-rename tool of Total Commander.
+Designed as a user-friendly integration for the Linux file manager **Nemo** (Linux Mint / Cinnamon) – inspired by the multi-rename tool of Total Commander. Tested with Nemo so far. The program can also be started from other file managers via “Open with”, but the F2 key and the context-menu entry are Nemo-specific.
 
 Version 1.0.0 of 2026-11-21 · Programming: Paul Bittner · Licence: GNU GPL v3 or later
 

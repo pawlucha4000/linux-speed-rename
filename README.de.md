@@ -1,7 +1,7 @@
 # Linux Speed Rename
 
 Ein übersichtliches, intuitiv zu bedienendes Tool zum Umbenennen von einigen wenigen oder sehr, sehr vielen Dateien, das sich nahtlos in die Linux-Umgebung einfügt.
-Konzipiert als bedienungsfreundliche Integration für den Linux-Dateimanager **Nemo** (Linux Mint / Cinnamon) – nach dem Vorbild des Mehrfach-Umbenenn-Tools im Total Commander.
+Konzipiert als bedienungsfreundliche Integration für den Linux-Dateimanager **Nemo** (Linux Mint / Cinnamon) – nach dem Vorbild des Mehrfach-Umbenenn-Tools im Total Commander. Bisher nur mit Nemo getestet. Das Programm lässt sich auch aus anderen Dateimanagern über „Öffnen mit“ starten; F2 und der Rechtsklick-Eintrag sind aber Nemo-spezifisch.
 
 Version 1.0.0 vom 2026-11-21 · Programmierung: Paul Bittner · Lizenz: GNU GPL v3 oder neuer
 
