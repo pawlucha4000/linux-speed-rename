@@ -1,6 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Installs Multi-Rename (Mehrfach-Umbenennen) for the current user (no root needed)
+# Installs Linux Speed Rename for the current user (no root needed)
 # and makes it Nemo's bulk-rename tool (F2 with several files selected).
 set -eu
 
@@ -35,8 +35,8 @@ if gsettings list-keys org.nemo.preferences 2>/dev/null | grep -qx bulk-rename-t
     CUR="$(gsettings get org.nemo.preferences bulk-rename-tool)"
     case "$CUR" in *mehrfach-umbenennen*) ;; *) printf '%s\n' "$CUR" > "$PREV" ;; esac
     gsettings set org.nemo.preferences bulk-rename-tool "b'$LAUNCHER'"
-    echo "Nemo: F2 with several files selected now opens Multi-Rename."
+    echo "Nemo: F2 with several files selected now opens Linux Speed Rename."
 fi
 
-echo "Installed. In Nemo: right-click → \"Multi-rename …\" or press F2 with several files selected."
+echo "Installed. In Nemo: right-click → \"Linux Speed Rename …\" or press F2 with several files selected."
 echo "If the menu entry is missing, restart Nemo once: nemo -q"

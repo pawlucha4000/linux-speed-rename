@@ -2,7 +2,7 @@
 # Copyright (C) 2026 Paul Bittner
 """Programm-Angaben an einer Stelle / programme metadata in one place."""
 
-APP_NAME = "Multi-Rename"
+APP_NAME = "Linux Speed Rename"
 __version__ = "1.0.0"
 RELEASE_DATE = "2026-11-21"
 AUTHOR = "Paul Bittner"

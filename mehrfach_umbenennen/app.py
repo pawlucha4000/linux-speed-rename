@@ -412,7 +412,7 @@ class RenameWindow(Gtk.Window):
             counter_digits=self.c_digits.get_value_as_int(),
         )
 
-    def _schedule(self, *_):
+    def _schedule(self, *_args):
         if not self._pending:
             self._pending = True
             GLib.timeout_add(80, self._refresh)
@@ -458,7 +458,7 @@ class RenameWindow(Gtk.Window):
             self.paths.sort(key=lambda p: (os.path.getmtime(p) if os.path.lexists(p) else 0, p))
         self._refresh()
 
-    def _reset(self, *_):
+    def _reset(self, *_args):
         self._apply_settings(E.Settings())
         self._current_preset = None
         self._fill_presets()
@@ -481,7 +481,7 @@ class RenameWindow(Gtk.Window):
         except OSError:
             pass
 
-    def _start(self, *_):
+    def _start(self, *_args):
         self.entries = E.compute(self.paths, self._settings())
         if E.has_errors(self.entries):
             self._refresh()
@@ -494,12 +494,9 @@ class RenameWindow(Gtk.Window):
             return
         E.save_journal(done)
         self._remember()
-        mapping = dict(done)
-        self.paths = [mapping.get(p, p) for p in self.paths]
-        self._refresh()
-        self.status.set_text(_("Files renamed: {n}. “Undo” restores the old names.").format(n=len(done)))
+        self.close()  # Erfolg: Programm schließt sich (keine zweite Aktion vorgesehen)
 
-    def _undo(self, *_):
+    def _undo(self, *_args):
         try:
             reverted = E.undo_last()
         except Exception as exc:  # noqa: BLE001
@@ -517,7 +514,7 @@ class RenameWindow(Gtk.Window):
         dlg.run()
         dlg.destroy()
 
-    def _show_help(self, *_):
+    def _show_help(self, *_args):
         dlg = Gtk.Dialog(title=_("Help") + " – " + APP_TITLE, transient_for=self, modal=True)
         dlg.add_button(_("About"), 1)
         dlg.add_button(_("Close"), Gtk.ResponseType.CLOSE)
@@ -534,7 +531,7 @@ class RenameWindow(Gtk.Window):
         if response == 1:
             self._show_about()
 
-    def _show_about(self, *_):
+    def _show_about(self, *_args):
         dlg = Gtk.AboutDialog(transient_for=self, modal=True)
         dlg.set_program_name(APP_NAME)
         dlg.set_version(_("Version {version} of {date}").format(version=__version__, date=RELEASE_DATE))
