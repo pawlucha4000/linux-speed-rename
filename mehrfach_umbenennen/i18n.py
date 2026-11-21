@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Paul Bittner
 """Übersetzungen / translations.
 
 The source language of all texts is British English. Translations live in standard

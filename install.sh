@@ -1,4 +1,5 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Installs Multi-Rename (Mehrfach-Umbenennen) for the current user (no root needed)
 # and makes it Nemo's bulk-rename tool (F2 with several files selected).
 set -eu

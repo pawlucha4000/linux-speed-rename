@@ -26,9 +26,16 @@ En haut, vous composez le nouveau nom à partir de <b>blocs</b>. Un clic sur un 
 
 <b>Rechercher et remplacer</b> s’applique après le masque. « Expression régulière » permet des motifs avancés, mais ce n’est jamais nécessaire.
 
+<b>Expressions régulières</b> – les parenthèses <tt>( )</tt> dans le texte recherché mémorisent une partie ; <tt>$1</tt>, <tt>$2</tt> … la réinsèrent dans le remplacement :
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Dessin Objet  →  K733142-EN.1.- Dessin Objet
+  <tt>\S+</tt> = un mot sans espace, <tt>.*</tt> = n’importe quel texte, <tt>\d</tt> = un chiffre, <tt>^</tt> / <tt>$</tt> = début / fin.
+
+<b>F2 Charger/enregistrer les réglages</b> – enregistre tous les champs sous un nom pour réutiliser un réglage compliqué en deux clics. <b>F2</b> ouvre la liste.
+
 L’ordre de la liste détermine le compteur. Déplacez les lignes avec la souris ou triez par nom ou par date.
 
 L’aperçu devient rouge si un nom apparaît deux fois ou existe déjà – rien n’est alors renommé.
 <b>Défaire</b> annule le dernier renommage, même après un redémarrage du programme.
 
-Clavier : <b>Ctrl+Entrée</b> renommer, <b>F1</b> aide, <b>Échap</b> fermer.
+Clavier : <b>Ctrl+Entrée</b> renommer, <b>F1</b> aide, <b>F2</b> réglages enregistrés, <b>Échap</b> fermer.

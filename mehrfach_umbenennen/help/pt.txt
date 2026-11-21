@@ -26,9 +26,16 @@ No topo, você monta o novo nome a partir de <b>blocos</b>. Clicar em um botão 
 
 <b>Localizar e substituir</b> é aplicado depois da máscara. “Expressão regular” permite padrões avançados, mas nunca é necessária.
 
+<b>Expressões regulares</b> – parênteses <tt>( )</tt> no texto pesquisado guardam uma parte; <tt>$1</tt>, <tt>$2</tt> … a inserem de novo na substituição:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Desenho Objeto  →  K733142-EN.1.- Desenho Objeto
+  <tt>\S+</tt> = uma palavra sem espaços, <tt>.*</tt> = qualquer texto, <tt>\d</tt> = um dígito, <tt>^</tt> / <tt>$</tt> = início / fim.
+
+<b>F2 Carregar/salvar configurações</b> – salva todos os campos com um nome para reutilizar uma configuração complicada com dois cliques. <b>F2</b> abre a lista.
+
 A ordem da lista define o contador. Arraste as linhas com o mouse ou ordene por nome ou data.
 
 A pré-visualização fica vermelha se um nome aparecer duas vezes ou já existir – nesse caso nada é renomeado.
 <b>Desfazer</b> reverte a última renomeação, mesmo depois de reiniciar o programa.
 
-Teclado: <b>Ctrl+Enter</b> renomear, <b>F1</b> ajuda, <b>Esc</b> fechar.
+Teclado: <b>Ctrl+Enter</b> renomear, <b>F1</b> ajuda, <b>F2</b> configurações salvas, <b>Esc</b> fechar.

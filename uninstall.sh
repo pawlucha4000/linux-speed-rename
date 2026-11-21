@@ -1,4 +1,5 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Removes Multi-Rename and restores Nemo's previous bulk-rename tool.
 set -eu
 

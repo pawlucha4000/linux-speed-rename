@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Paul Bittner
 """Umbenenn-Logik ohne GUI: Masken auswerten, Vorschau berechnen, umbenennen, rückgängig machen.
 
 Platzhalter (wie im Total Commander):
@@ -17,6 +19,7 @@ Platzhalter (wie im Total Commander):
 
 from __future__ import annotations
 
+import dataclasses
 import datetime as _dt
 import json
 import os
@@ -126,12 +129,43 @@ def _apply_case(text: str, mode: int) -> str:
     return text
 
 
+_GROUP_REF = re.compile(r"\$\$|\$\{(\d+)\}|\$(\d)|\\(\d)|\\\\")
+
+
+class ReplaceError(ValueError):
+    pass
+
+
+def _regex_replacement(repl: str):
+    """Ersetzungstext für reguläre Ausdrücke.
+
+    Wie im Total Commander steht $1 für die erste Klammer, $2 für die zweite usw.
+    Auch \\1 und ${10} gehen; $$ ergibt ein Dollarzeichen. Alles andere bleibt wörtlich.
+    """
+
+    def build(m: re.Match) -> str:
+        def ref(r: re.Match) -> str:
+            tok = r.group(0)
+            if tok == "$$":
+                return "$"
+            if tok == "\\\\":
+                return "\\"
+            n = int(r.group(1) or r.group(2) or r.group(3))
+            if n > (m.re.groups or 0):
+                raise ReplaceError(_("Group ${n} does not exist in the search pattern").format(n=n))
+            return m.group(n) or ""
+
+        return _GROUP_REF.sub(ref, repl)
+
+    return build
+
+
 def _search_replace(text: str, s: Settings) -> str:
     if not s.search:
         return text
     count = 1 if s.once else 0
     if s.regex:
-        return re.sub(s.search, s.replace, text, count=count)
+        return re.sub(s.search, _regex_replacement(s.replace), text, count=count)
     if s.once:
         return text.replace(s.search, s.replace, 1)
     return text.replace(s.search, s.replace)
@@ -161,12 +195,16 @@ def compute(paths: list[str], s: Settings) -> list[Entry]:
         parent = os.path.basename(os.path.dirname(path))
         new_base = expand(s.name_mask, base, ext, counter, mtime, parent)
         new_ext = expand(s.ext_mask, base, ext, counter, mtime, parent)
-        if s.include_ext:
-            full = new_base + ("." + new_ext if new_ext else "")
-            full = _search_replace(full, s)
-        else:
-            new_base = _search_replace(new_base, s)
-            full = new_base + ("." + new_ext if new_ext else "")
+        try:
+            if s.include_ext:
+                full = new_base + ("." + new_ext if new_ext else "")
+                full = _search_replace(full, s)
+            else:
+                new_base = _search_replace(new_base, s)
+                full = new_base + ("." + new_ext if new_ext else "")
+        except ReplaceError as exc:
+            entries.append(Entry(path, old, str(exc)))
+            continue
         full = _apply_case(full, s.case)
         entries.append(Entry(path, full))
 
@@ -313,6 +351,19 @@ def save_config(cfg: dict) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(cfg, f, ensure_ascii=False, indent=1)
+
+
+def settings_to_dict(s: Settings) -> dict:
+    return dataclasses.asdict(s)
+
+
+def settings_from_dict(d: dict) -> Settings:
+    """Liest gespeicherte Einstellungen; unbekannte oder kaputte Werte werden ignoriert."""
+    s = Settings()
+    for f in dataclasses.fields(Settings):
+        if f.name in d and isinstance(d[f.name], type(getattr(s, f.name))):
+            setattr(s, f.name, d[f.name])
+    return s
 
 
 def remember(cfg: dict, key: str, value: str, limit: int = 15) -> None:

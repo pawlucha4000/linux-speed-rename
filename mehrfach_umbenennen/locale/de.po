@@ -5,215 +5,368 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mehrfach-umbenennen\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-21 01:11+0100\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: mehrfach_umbenennen/app.py:251
 msgid "3 digits gives 001, 002, 003 …"
 msgstr "3 Stellen ergibt 001, 002, 003 …"
 
+#: mehrfach_umbenennen/app.py:272
+msgid "<Default>"
+msgstr "<Standard>"
+
+#: mehrfach_umbenennen/app.py:26
+msgid "A clear, intuitive tool for renaming a handful or a great many files that blends seamlessly into the Linux desktop. Designed as a user-friendly integration for the Linux file manager Nemo."
+msgstr "Ein übersichtliches, intuitiv zu bedienendes Tool zum Umbenennen von einigen wenigen oder sehr, sehr vielen Dateien, das sich nahtlos in die Linux-Umgebung einfügt. Konzipiert als bedienungsfreundliche Integration für den Linux-Dateimanager Nemo."
+
+#: mehrfach_umbenennen/app.py:163 mehrfach_umbenennen/app.py:522
+msgid "About"
+msgstr "Über"
+
+#: mehrfach_umbenennen/app.py:306 mehrfach_umbenennen/app.py:338
+#: mehrfach_umbenennen/app.py:373 mehrfach_umbenennen/app.py:577
 msgid "Cancel"
 msgstr "Abbrechen"
 
+#: mehrfach_umbenennen/app.py:230
 msgid "Case:"
 msgstr "Groß/klein:"
 
+#: mehrfach_umbenennen/app.py:576
 msgid "Choose files to rename"
 msgstr "Dateien zum Umbenennen wählen"
 
+#: mehrfach_umbenennen/app.py:172 mehrfach_umbenennen/app.py:523
 msgid "Close"
 msgstr "Schließen"
 
+#: mehrfach_umbenennen/app.py:428
+#, python-brace-format
 msgid "Conflicts: {n} – please adjust the mask."
 msgstr "Konflikte: {n} – bitte Maske anpassen."
 
+#: mehrfach_umbenennen/app.py:350
+msgid "Could not save the settings."
+msgstr "Die Einstellungen konnten nicht gespeichert werden."
+
+#: mehrfach_umbenennen/app.py:252
 msgid "Counter [C]"
 msgstr "Zähler [C]"
 
+#: mehrfach_umbenennen/app.py:338
+msgid "Delete"
+msgstr "Löschen"
+
+#: mehrfach_umbenennen/app.py:274
+msgid "Delete entry …"
+msgstr "Eintrag löschen …"
+
+#: mehrfach_umbenennen/app.py:337
+#, python-brace-format
+msgid "Delete the saved settings “{name}”?"
+msgstr "Gespeicherte Einstellungen „{name}“ löschen?"
+
+#: mehrfach_umbenennen/app.py:248
 msgid "Digits:"
 msgstr "Stellen:"
 
+#: mehrfach_umbenennen/engine.py:231 mehrfach_umbenennen/engine.py:233
 msgid "Duplicate name"
 msgstr "Doppelter Name"
 
+#: mehrfach_umbenennen/engine.py:39
 msgid "Each Word Capitalised"
 msgstr "Jedes Wort Groß"
 
+#: mehrfach_umbenennen/engine.py:221
 msgid "Empty name"
 msgstr "Leerer Name"
 
+#: mehrfach_umbenennen/app.py:369
 msgid "Example name"
 msgstr "Beispielname"
 
+#: mehrfach_umbenennen/app.py:111
 msgid "Extension"
 msgstr "Erweiterung"
 
+#: mehrfach_umbenennen/app.py:271
+msgid "F2 Load/save settings"
+msgstr "F2 Einstellungen laden/speichern"
+
+#: mehrfach_umbenennen/engine.py:243
 msgid "File already exists"
 msgstr "Datei existiert bereits"
 
+#: mehrfach_umbenennen/app.py:500
+#, python-brace-format
 msgid "Files renamed: {n}. “Undo” restores the old names."
 msgstr "Umbenannte Dateien: {n}. „Rückgängig“ stellt die alten Namen wieder her."
 
+#: mehrfach_umbenennen/app.py:511
+#, python-brace-format
 msgid "Files restored to their old names: {n}"
 msgstr "Zurückbenannte Dateien: {n}"
 
+#: mehrfach_umbenennen/app.py:430
+#, python-brace-format
 msgid "Files to be renamed: {n} of {total}"
 msgstr "Werden umbenannt: {n} von {total} Dateien"
 
+#: mehrfach_umbenennen/app.py:432
+#, python-brace-format
 msgid "Files: {total} – no changes yet"
 msgstr "Dateien: {total} – noch keine Änderung"
 
+#: mehrfach_umbenennen/engine.py:39
 msgid "First letter capital"
 msgstr "Erster Buchstabe groß"
 
+#: mehrfach_umbenennen/app.py:142
 msgid "Folder"
 msgstr "Ordner"
 
+#: mehrfach_umbenennen/app.py:226
 msgid "For advanced users: treat the search text as a regular expression"
 msgstr "Für Fortgeschrittene: Suchtext als regulären Ausdruck auswerten"
 
+#: mehrfach_umbenennen/engine.py:155
+#, python-brace-format
+msgid "Group ${n} does not exist in the search pattern"
+msgstr "Gruppe ${n} gibt es im Suchmuster nicht"
+
+#: mehrfach_umbenennen/app.py:165 mehrfach_umbenennen/app.py:521
 msgid "Help"
 msgstr "Hilfe"
 
+#: mehrfach_umbenennen/app.py:373
 msgid "Insert"
 msgstr "Einfügen"
 
+#: mehrfach_umbenennen/engine.py:225
 msgid "Invalid name"
 msgstr "Ungültiger Name"
 
+#: mehrfach_umbenennen/engine.py:187
+#, python-brace-format
 msgid "Invalid regular expression: {error}"
 msgstr "Regulärer Ausdruck fehlerhaft: {error}"
 
-msgid "Multi-Rename"
-msgstr "Mehrfach-Umbenennen"
+#: mehrfach_umbenennen/app.py:35
+msgid "Licence: GNU GPL v3 or later – free software without any warranty"
+msgstr "Lizenz: GNU GPL v3 oder neuer – freie Software ohne jede Gewährleistung"
 
+#: mehrfach_umbenennen/engine.py:223
 msgid "Name contains '/'"
 msgstr "Name enthält '/'"
 
+#: mehrfach_umbenennen/app.py:312
+msgid "Name for these settings:"
+msgstr "Name für diese Einstellungen:"
+
+#: mehrfach_umbenennen/engine.py:227
 msgid "Name too long"
 msgstr "Name zu lang"
 
+#: mehrfach_umbenennen/app.py:102
 msgid "New file name"
 msgstr "Neuer Dateiname"
 
+#: mehrfach_umbenennen/app.py:141
 msgid "New name"
 msgstr "Neuer Name"
 
+#: mehrfach_umbenennen/app.py:142
 msgid "Note"
 msgstr "Hinweis"
 
+#: mehrfach_umbenennen/app.py:141
 msgid "Old name"
 msgstr "Alter Name"
 
+#: mehrfach_umbenennen/app.py:577
 msgid "Open"
 msgstr "Öffnen"
 
+#: mehrfach_umbenennen/app.py:124
 msgid "Order (sets the counter):"
 msgstr "Reihenfolge (bestimmt den Zähler):"
 
+#: mehrfach_umbenennen/app.py:34
+#, python-brace-format
+msgid "Programming: {author}"
+msgstr "Programmierung: {author}"
+
+#: mehrfach_umbenennen/app.py:224
 msgid "Regular expression"
 msgstr "Regulärer Ausdruck"
 
+#: mehrfach_umbenennen/app.py:169
 msgid "Rename"
 msgstr "Umbenennen"
 
+#. noqa: BLE001
+#: mehrfach_umbenennen/app.py:492
 msgid "Renaming failed. Nothing was changed."
 msgstr "Umbenennen fehlgeschlagen. Es wurde nichts geändert."
 
+#: mehrfach_umbenennen/app.py:225
 msgid "Replace only the first occurrence"
 msgstr "Nur das erste Vorkommen ersetzen"
 
+#: mehrfach_umbenennen/app.py:219
 msgid "Replace with:"
 msgstr "Ersetzen durch:"
 
+#: mehrfach_umbenennen/app.py:130
 msgid "Reset all"
 msgstr "Alles zurücksetzen"
 
+#: mehrfach_umbenennen/app.py:306
+msgid "Save"
+msgstr "Speichern"
+
+#: mehrfach_umbenennen/app.py:261
+msgid "Save all settings under a name and load them again later (F2)"
+msgstr "Alle Einstellungen unter einem Namen speichern und später wieder laden (F2)"
+
+#: mehrfach_umbenennen/app.py:305
+msgid "Save settings"
+msgstr "Einstellungen speichern"
+
+#: mehrfach_umbenennen/app.py:273
+msgid "Save settings …"
+msgstr "Einstellungen speichern …"
+
+#: mehrfach_umbenennen/app.py:236
 msgid "Search & Replace"
 msgstr "Suchen & Ersetzen"
 
+#: mehrfach_umbenennen/app.py:217
 msgid "Search for:"
 msgstr "Suchen nach:"
 
+#: mehrfach_umbenennen/app.py:372
 msgid "Select part"
 msgstr "Teil auswählen"
 
+#: mehrfach_umbenennen/app.py:333
+msgid "Select saved settings first."
+msgstr "Wähle zuerst gespeicherte Einstellungen aus."
+
+#: mehrfach_umbenennen/app.py:380
 msgid "Select the part you want to keep with the mouse:"
 msgstr "Markiere mit der Maus den Teil, den du behalten willst:"
 
+#: mehrfach_umbenennen/app.py:247
 msgid "Start at:"
 msgstr "Starten bei:"
 
+#: mehrfach_umbenennen/app.py:247
 msgid "Step:"
 msgstr "Schrittweite:"
 
+#: mehrfach_umbenennen/engine.py:268
+#, python-brace-format
 msgid "Target already exists: {path}"
 msgstr "Ziel existiert bereits: {path}"
 
+#: mehrfach_umbenennen/engine.py:256
 msgid "There are conflicts, please resolve them first."
 msgstr "Es gibt Konflikte, bitte erst beheben."
 
+#: mehrfach_umbenennen/engine.py:39
 msgid "UPPERCASE"
 msgstr "GROSSBUCHSTABEN"
 
+#: mehrfach_umbenennen/engine.py:39
 msgid "Unchanged"
 msgstr "Unverändert"
 
+#: mehrfach_umbenennen/app.py:167
 msgid "Undo"
 msgstr "Rückgängig"
 
+#. noqa: BLE001
+#: mehrfach_umbenennen/app.py:506
 msgid "Undo is not possible."
 msgstr "Rückgängig machen nicht möglich."
 
+#: mehrfach_umbenennen/app.py:33 mehrfach_umbenennen/app.py:540
+#, python-brace-format
+msgid "Version {version} of {date}"
+msgstr "Version {version} vom {date}"
+
+#: mehrfach_umbenennen/app.py:97 mehrfach_umbenennen/app.py:109
 msgid "[C] Counter"
 msgstr "[C] Zähler"
 
+#: mehrfach_umbenennen/app.py:108
 msgid "[E#-#] Part"
 msgstr "[E#-#] Teil"
 
+#: mehrfach_umbenennen/app.py:107
 msgid "[E] Extension"
 msgstr "[E] Erweiterung"
 
+#: mehrfach_umbenennen/app.py:96
 msgid "[N#-#] Part"
 msgstr "[N#-#] Teil"
 
+#: mehrfach_umbenennen/app.py:95
 msgid "[N] Name"
 msgstr "[N] Name"
 
+#: mehrfach_umbenennen/app.py:100
 msgid "[P] Folder"
 msgstr "[P] Ordner"
 
+#: mehrfach_umbenennen/app.py:98
 msgid "[YMD] Date"
 msgstr "[YMD] Datum"
 
+#: mehrfach_umbenennen/app.py:99
 msgid "[hms] Time"
 msgstr "[hms] Zeit"
 
+#: mehrfach_umbenennen/app.py:223
 msgid "also in extension"
 msgstr "auch in Erweiterung"
 
+#: mehrfach_umbenennen/app.py:125
 msgid "by date"
 msgstr "nach Datum"
 
+#: mehrfach_umbenennen/app.py:125
 msgid "by name"
 msgstr "nach Name"
 
+#: mehrfach_umbenennen/app.py:385
 msgid "count from the end (the last characters)"
 msgstr "von hinten zählen (die letzten Zeichen)"
 
+#: mehrfach_umbenennen/engine.py:39
 msgid "lowercase"
 msgstr "kleinbuchstaben"
 
+#: mehrfach_umbenennen/app.py:222
 msgid "only once"
 msgstr "nur 1×"
 
+#: mehrfach_umbenennen/app.py:129
 msgid "or drag rows with the mouse"
 msgstr "oder Zeilen mit der Maus verschieben"
 
+#: mehrfach_umbenennen/app.py:442
 msgid "unchanged"
 msgstr "unverändert"
 
+#: mehrfach_umbenennen/app.py:384
 msgid "up to the end (even if other names are longer)"
 msgstr "bis zum Ende (auch wenn andere Namen länger sind)"

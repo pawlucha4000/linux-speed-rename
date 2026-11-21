@@ -26,9 +26,16 @@ Bovenaan stel je de nieuwe naam samen uit <b>bouwstenen</b>. Een klik op een kno
 
 <b>Zoeken en vervangen</b> wordt na het masker toegepast. Met ‘Reguliere expressie’ zijn geavanceerde patronen mogelijk, maar nodig is dat nooit.
 
+<b>Reguliere expressies</b> – ronde haakjes <tt>( )</tt> in de zoektekst onthouden een deel; <tt>$1</tt>, <tt>$2</tt> … zetten het bij het vervangen weer in:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Tekening Object  →  K733142-EN.1.- Tekening Object
+  <tt>\S+</tt> = een woord zonder spaties, <tt>.*</tt> = willekeurige tekst, <tt>\d</tt> = een cijfer, <tt>^</tt> / <tt>$</tt> = begin / einde.
+
+<b>F2 Instellingen laden/opslaan</b> – slaat alle velden op onder een naam, zodat je een ingewikkelde instelling met twee klikken opnieuw gebruikt. <b>F2</b> opent de lijst.
+
 De volgorde van de lijst bepaalt de teller. Sleep rijen met de muis of sorteer op naam of datum.
 
 De voorbeeldweergave wordt rood als een naam dubbel voorkomt of al bestaat – dan wordt er niets hernoemd.
 <b>Ongedaan maken</b> draait de laatste hernoeming terug, ook na een herstart van het programma.
 
-Toetsenbord: <b>Ctrl+Enter</b> hernoemen, <b>F1</b> help, <b>Esc</b> sluiten.
+Toetsenbord: <b>Ctrl+Enter</b> hernoemen, <b>F1</b> help, <b>F2</b> opgeslagen instellingen, <b>Esc</b> sluiten.

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Paul Bittner
 """Multi-Rename – GTK window in the style of Total Commander's multi-rename tool."""
 
 from __future__ import annotations
@@ -13,10 +15,25 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gdk, GLib, Gtk, Pango  # noqa: E402
 
+from . import AUTHOR, COPYRIGHT_YEAR, RELEASE_DATE, WEBSITE, APP_NAME, __version__  # noqa: E402
 from . import engine as E  # noqa: E402
 from .i18n import _, help_text  # noqa: E402
 
-APP_TITLE = _("Multi-Rename")
+APP_TITLE = APP_NAME
+
+
+def description() -> str:
+    return _("A clear, intuitive tool for renaming a handful or a great many files that blends seamlessly "
+             "into the Linux desktop. Designed as a user-friendly integration for the Linux file manager Nemo.")
+
+
+def info_lines() -> list[str]:
+    """Version, date, author and licence – shown in the help and the About window."""
+    return [
+        f"{APP_NAME} – " + _("Version {version} of {date}").format(version=__version__, date=RELEASE_DATE),
+        _("Programming: {author}").format(author=AUTHOR) + f" · © {COPYRIGHT_YEAR}",
+        _("Licence: GNU GPL v3 or later – free software without any warranty"),
+    ]
 
 
 def _natural_key(s: str):
@@ -96,8 +113,11 @@ class RenameWindow(Gtk.Window):
         # --- Suchen & Ersetzen ---
         top.pack_start(self._search_frame(), True, True, 0)
 
-        # --- Zähler ---
-        top.pack_start(self._counter_frame(), False, False, 0)
+        # --- Zähler und gespeicherte Einstellungen (F2) ---
+        right = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        right.pack_start(self._counter_frame(), True, True, 0)
+        right.pack_start(self._preset_combo(), False, False, 0)
+        top.pack_start(right, False, False, 0)
 
         # --- Sortierung ---
         sortbar = Gtk.Box(spacing=6)
@@ -140,6 +160,8 @@ class RenameWindow(Gtk.Window):
         self.status = Gtk.Label(xalign=0)
         self.status.set_ellipsize(Pango.EllipsizeMode.END)
         bottom.pack_start(self.status, True, True, 0)
+        about_btn = Gtk.Button(label=_("About"))
+        about_btn.connect("clicked", self._show_about)
         help_btn = Gtk.Button(label=_("Help"))
         help_btn.connect("clicked", self._show_help)
         self.undo_btn = Gtk.Button(label=_("Undo"))
@@ -149,7 +171,7 @@ class RenameWindow(Gtk.Window):
         self.start_btn.connect("clicked", self._start)
         close_btn = Gtk.Button(label=_("Close"))
         close_btn.connect("clicked", lambda *_: self.close())
-        for b in (help_btn, self.undo_btn, self.start_btn, close_btn):
+        for b in (about_btn, help_btn, self.undo_btn, self.start_btn, close_btn):
             bottom.pack_start(b, False, False, 0)
         outer.pack_start(bottom, False, False, 0)
 
@@ -228,6 +250,118 @@ class RenameWindow(Gtk.Window):
             grid.attach(w, 1, row, 1, 1)
         self.c_digits.set_tooltip_text(_("3 digits gives 001, 002, 003 …"))
         return self._frame(_("Counter [C]"), grid)
+
+    # ---------- Gespeicherte Einstellungen (F2) ----------
+
+    PRESET_HEAD, PRESET_DEFAULT, PRESET_SAVE, PRESET_DELETE, PRESET_SEP = (
+        "__head", "__default", "__save", "__delete", "__sep")
+
+    def _preset_combo(self) -> Gtk.ComboBoxText:
+        self.presets = Gtk.ComboBoxText()
+        self.presets.set_tooltip_text(_("Save all settings under a name and load them again later (F2)"))
+        self.presets.set_row_separator_func(lambda model, it: model[it][1] == self.PRESET_SEP)
+        self._current_preset = None
+        self._fill_presets()
+        self.presets.connect("changed", self._on_preset)
+        return self.presets
+
+    def _fill_presets(self, active: str | None = None):
+        self._preset_busy = True
+        self.presets.remove_all()
+        self.presets.append(self.PRESET_HEAD, _("F2 Load/save settings"))
+        self.presets.append(self.PRESET_DEFAULT, _("<Default>"))
+        self.presets.append(self.PRESET_SAVE, _("Save settings …"))
+        self.presets.append(self.PRESET_DELETE, _("Delete entry …"))
+        names = sorted(self.cfg.get("presets", {}), key=str.casefold)
+        if names:
+            self.presets.append(self.PRESET_SEP, "")
+        for name in names:
+            self.presets.append("preset:" + name, name)
+        self.presets.set_active_id("preset:" + active if active else self.PRESET_HEAD)
+        self._preset_busy = False
+
+    def _on_preset(self, combo):
+        if self._preset_busy:
+            return
+        key = combo.get_active_id()
+        if key == self.PRESET_DEFAULT:
+            self._apply_settings(E.Settings())
+            self._current_preset = None
+        elif key == self.PRESET_SAVE:
+            self._save_preset()
+        elif key == self.PRESET_DELETE:
+            self._delete_preset()
+        elif key and key.startswith("preset:"):
+            name = key[len("preset:"):]
+            self._apply_settings(E.settings_from_dict(self.cfg.get("presets", {}).get(name, {})))
+            self._current_preset = name
+            return
+        else:
+            return
+        # Aktions-Einträge nicht stehen lassen
+        GLib.idle_add(self._fill_presets, self._current_preset)
+
+    def _save_preset(self):
+        dlg = Gtk.Dialog(title=_("Save settings"), transient_for=self, modal=True)
+        dlg.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Save"), Gtk.ResponseType.OK)
+        dlg.set_default_response(Gtk.ResponseType.OK)
+        box = dlg.get_content_area()
+        box.set_spacing(8)
+        for side in ("start", "end", "top"):
+            getattr(box, f"set_margin_{side}")(12)
+        box.add(Gtk.Label(label=_("Name for these settings:"), xalign=0))
+        name_box = Gtk.ComboBoxText.new_with_entry()
+        for name in sorted(self.cfg.get("presets", {}), key=str.casefold):
+            name_box.append_text(name)
+        entry = name_box.get_child()
+        entry.set_text(self._current_preset or "")
+        entry.set_activates_default(True)
+        entry.set_width_chars(32)
+        box.add(name_box)
+        dlg.show_all()
+        ok = dlg.run() == Gtk.ResponseType.OK
+        name = entry.get_text().strip() if ok else ""
+        dlg.destroy()
+        if name:
+            self.cfg.setdefault("presets", {})[name] = E.settings_to_dict(self._settings())
+            self._save_cfg()
+            self._current_preset = name
+
+    def _delete_preset(self):
+        name = self._current_preset
+        if not name:
+            self._error(_("Select saved settings first."), "")
+            return
+        dlg = Gtk.MessageDialog(transient_for=self, modal=True, message_type=Gtk.MessageType.QUESTION,
+                                buttons=Gtk.ButtonsType.NONE,
+                                text=_("Delete the saved settings “{name}”?").format(name=name))
+        dlg.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Delete"), Gtk.ResponseType.OK)
+        ok = dlg.run() == Gtk.ResponseType.OK
+        dlg.destroy()
+        if ok:
+            self.cfg.get("presets", {}).pop(name, None)
+            self._save_cfg()
+            self._current_preset = None
+
+    def _save_cfg(self):
+        try:
+            E.save_config(self.cfg)
+        except OSError as exc:
+            self._error(_("Could not save the settings."), str(exc))
+
+    def _apply_settings(self, s: E.Settings):
+        self.name.entry.set_text(s.name_mask)
+        self.ext.entry.set_text(s.ext_mask)
+        self.search.entry.set_text(s.search)
+        self.replace.entry.set_text(s.replace)
+        self.regex.set_active(s.regex)
+        self.once.set_active(s.once)
+        self.include_ext.set_active(s.include_ext)
+        self.case.set_active(s.case if 0 <= s.case < len(E.CASE_OPTIONS) else 0)
+        self.c_start.set_value(s.counter_start)
+        self.c_step.set_value(s.counter_step)
+        self.c_digits.set_value(s.counter_digits)
+        self._schedule()
 
     # ---------- Aktionen ----------
 
@@ -325,16 +459,9 @@ class RenameWindow(Gtk.Window):
         self._refresh()
 
     def _reset(self, *_):
-        self.name.entry.set_text("[N]")
-        self.ext.entry.set_text("[E]")
-        self.search.entry.set_text("")
-        self.replace.entry.set_text("")
-        for w in (self.regex, self.once, self.include_ext):
-            w.set_active(False)
-        self.case.set_active(0)
-        self.c_start.set_value(1)
-        self.c_step.set_value(1)
-        self.c_digits.set_value(1)
+        self._apply_settings(E.Settings())
+        self._current_preset = None
+        self._fill_presets()
 
     def _remember(self):
         s = self._settings()
@@ -392,14 +519,32 @@ class RenameWindow(Gtk.Window):
 
     def _show_help(self, *_):
         dlg = Gtk.Dialog(title=_("Help") + " – " + APP_TITLE, transient_for=self, modal=True)
+        dlg.add_button(_("About"), 1)
         dlg.add_button(_("Close"), Gtk.ResponseType.CLOSE)
-        dlg.set_default_size(620, 560)
+        dlg.set_default_size(620, 600)
+        footer = "\n".join(GLib.markup_escape_text(line) for line in info_lines())
         label = Gtk.Label(xalign=0, yalign=0, wrap=True, selectable=True)
-        label.set_markup(help_text())
+        label.set_markup(help_text() + "\n\n<span size='small' alpha='75%'>" + footer + "</span>")
         sw = Gtk.ScrolledWindow(margin=12)
         sw.add(label)
         dlg.get_content_area().pack_start(sw, True, True, 0)
         dlg.show_all()
+        response = dlg.run()
+        dlg.destroy()
+        if response == 1:
+            self._show_about()
+
+    def _show_about(self, *_):
+        dlg = Gtk.AboutDialog(transient_for=self, modal=True)
+        dlg.set_program_name(APP_NAME)
+        dlg.set_version(_("Version {version} of {date}").format(version=__version__, date=RELEASE_DATE))
+        dlg.set_comments(description())
+        dlg.set_copyright(f"© {COPYRIGHT_YEAR} {AUTHOR}")
+        dlg.set_authors([AUTHOR])
+        dlg.set_license_type(Gtk.License.GPL_3_0)
+        dlg.set_logo_icon_name("edit-find-replace")
+        if WEBSITE:
+            dlg.set_website(WEBSITE)
         dlg.run()
         dlg.destroy()
 
@@ -410,6 +555,9 @@ class RenameWindow(Gtk.Window):
         if event.keyval == Gdk.KEY_F1:
             self._show_help()
             return True
+        if event.keyval == Gdk.KEY_F2:
+            self.presets.popup()
+            return True
         if event.keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter) and event.state & Gdk.ModifierType.CONTROL_MASK:
             if self.start_btn.get_sensitive():
                 self._start()
@@ -419,6 +567,9 @@ class RenameWindow(Gtk.Window):
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    if "--version" in args:
+        print("\n".join(info_lines()))
+        return 0
     paths = [_to_path(a) for a in args if a and not a.startswith("--")]
     paths = [p for p in dict.fromkeys(paths) if os.path.lexists(p)]
     if not paths:

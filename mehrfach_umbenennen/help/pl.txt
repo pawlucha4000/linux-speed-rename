@@ -26,9 +26,16 @@ U góry budujesz nową nazwę z <b>bloków</b>. Kliknięcie przycisku wstawia bl
 
 <b>Znajdź i zamień</b> działa po zastosowaniu maski. „Wyrażenie regularne” pozwala na zaawansowane wzorce, ale nigdy nie jest konieczne.
 
+<b>Wyrażenia regularne</b> – nawiasy okrągłe <tt>( )</tt> w szukanym tekście zapamiętują fragment; <tt>$1</tt>, <tt>$2</tt> … wstawiają go ponownie przy zamianie:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Rysunek Obiekt  →  K733142-EN.1.- Rysunek Obiekt
+  <tt>\S+</tt> = słowo bez spacji, <tt>.*</tt> = dowolny tekst, <tt>\d</tt> = cyfra, <tt>^</tt> / <tt>$</tt> = początek / koniec.
+
+<b>F2 Wczytaj/zapisz ustawienia</b> – zapisuje wszystkie pola pod nazwą, aby skomplikowane ustawienia użyć ponownie dwoma kliknięciami. <b>F2</b> otwiera listę.
+
 Kolejność listy określa licznik. Przeciągnij wiersze myszą albo posortuj według nazwy lub daty.
 
 Podgląd zmienia kolor na czerwony, jeśli nazwa się powtarza lub już istnieje – wtedy nic nie zostanie zmienione.
 <b>Cofnij</b> przywraca ostatnią zmianę nazw, także po ponownym uruchomieniu programu.
 
-Klawiatura: <b>Ctrl+Enter</b> zmień nazwy, <b>F1</b> pomoc, <b>Esc</b> zamknij.
+Klawiatura: <b>Ctrl+Enter</b> zmień nazwy, <b>F1</b> pomoc, <b>F2</b> zapisane ustawienia, <b>Esc</b> zamknij.

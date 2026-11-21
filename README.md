@@ -1,7 +1,9 @@
 # Multi-Rename (Mehrfach-Umbenennen)
 
-Rename many files at once – as easily as with the multi-rename tool of Total Commander.
-For GTK desktops on Linux, built into the **Nemo** file manager (Linux Mint / Cinnamon).
+A clear, intuitive tool for renaming a handful or a great many files that blends seamlessly into the Linux desktop.
+Designed as a user-friendly integration for the Linux file manager **Nemo** (Linux Mint / Cinnamon) – inspired by the multi-rename tool of Total Commander.
+
+Version 1.0.0 of 2026-11-21 · Programming: Paul Bittner · Licence: GNU GPL v3 or later
 
 *Deutsch: [README.de.md](README.de.md)*
 
@@ -32,11 +34,54 @@ Also:
 - **Change case** (lower, UPPER, Title …).
 - **Order** (sets the counter): sort by name or date, or drag rows with the mouse.
 - **History:** recently used masks in the drop-down.
+- **Saved settings (F2):** store all fields under a name and load them again later – see below.
+- **Regular expressions** with `$1`, `$2` … like in Total Commander – see the simple examples below.
 - **Undo** – even after restarting the program.
 - **Safe:** renaming happens in two steps via temporary names, so swapping names (A↔B) works, and on any error everything is rolled back.
 - **Languages:** English, German, French, Spanish, Italian, Dutch, Polish, Portuguese – picked automatically from the system language.
 
-Keyboard: `Ctrl+Enter` rename, `F1` help, `Esc` close.
+Keyboard: `Ctrl+Enter` rename, `F1` help, `F2` saved settings, `Esc` close. The **About** button shows version, author and licence (`--version` on the command line).
+
+## Saved settings (F2)
+
+Complicated setups do not have to be typed again. The drop-down **“F2 Load/save settings”** (below the counter) saves *all* fields – masks, search & replace, options, counter – under a name of your choice:
+
+- **Save settings …** – store the current fields (enter a new name or pick an existing one to overwrite it).
+- Pick a saved name – all fields are filled in again.
+- **Delete entry …** – remove the currently loaded settings.
+- **&lt;Default&gt;** – back to the plain starting values.
+
+Press **F2** in the window to open the list. The settings are stored in `~/.config/mehrfach-umbenennen/` (see below).
+
+## Regular expressions – simple examples
+
+You never *need* regular expressions, but they help when names follow a fixed pattern and you want to rearrange parts of them.
+Tick **“Regular expression”** and use these building blocks in **Search for**:
+
+| Write | Means |
+|---|---|
+| `\S+` | a word without spaces (e.g. `K733142`) |
+| `\d` / `\d+` | one digit / one or more digits |
+| `.*` | any text (also empty) |
+| `^` / `$` | start / end of the name |
+| `\.` `\(` `\)` | a real dot, a real bracket (otherwise they have a special meaning) |
+| `( … )` | **remember** this part … |
+| `$1`, `$2` … | … and insert it again in **Replace with** (1st bracket, 2nd bracket …) |
+
+**Examples** (the extension, e.g. `.jpg`, stays untouched unless “also in extension” is ticked):
+
+| Task | Search for | Replace with | Before → after |
+|---|---|---|---|
+| Tidy up a drawing export | `^(\S+) - (\S+) - (\S+) - (.*)$` | `$1-$2.$3.$4` | `K733142 - EN - 1 - - Drawing Object` → `K733142-EN.1.- Drawing Object` |
+| Turn a date round | `^(\d\d)\.(\d\d)\.(\d{4})` | `$3-$2-$1` | `03.10.2026 Invoice` → `2026-10-03 Invoice` |
+| Swap two words | `^(\S+) (\S+)$` | `$2 $1` | `Smith John` → `John Smith` |
+| Remove a bracket and its content | ` ?\(.*?\)` | *(empty)* | `Photo (copy)` → `Photo` |
+| Remove a leading track number | `^\d+\s*-\s*` | *(empty)* | `07 - Song` → `Song` |
+| Underscores and multiple spaces → one space | `[ _]+` | ` ` *(one space)* | `My__holiday   2026` → `My holiday 2026` |
+
+How the first example works: `^(\S+) - (\S+) - (\S+) - (.*)$` reads *“at the start a word (1), then ` - `, a word (2), ` - `, a word (3), ` - `, and the rest up to the end (4)”*. The replacement `$1-$2.$3.$4` glues the four remembered parts together with `-`, `.` and `.`.
+
+Tip: watch the **preview** while typing – it shows the result at once. Save a pattern you need again with **F2 → Save settings …**.
 
 ## Installation
 
@@ -115,4 +160,6 @@ Ideas and bug reports are welcome.
 
 ## Licence
 
-MIT – see [LICENSE](LICENSE).
+Copyright © 2026 Paul Bittner
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY. See [LICENSE](LICENSE) for the full text.

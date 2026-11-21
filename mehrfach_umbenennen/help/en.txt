@@ -26,9 +26,16 @@ At the top you build the new name from <b>building blocks</b>. Clicking a button
 
 <b>Search &amp; Replace</b> is applied after the mask. “Regular expression” allows advanced patterns, but you never need it.
 
+<b>Regular expressions</b> – round brackets <tt>( )</tt> in the search text remember a part; <tt>$1</tt>, <tt>$2</tt> … insert it again in the replacement:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Drawing Object  →  K733142-EN.1.- Drawing Object
+  <tt>\S+</tt> = a word without spaces, <tt>.*</tt> = any text, <tt>\d</tt> = a digit, <tt>^</tt> / <tt>$</tt> = start / end.
+
+<b>F2 Load/save settings</b> – saves all fields under a name so you can reuse a complicated setup with two clicks. <b>F2</b> opens the list.
+
 The order of the list sets the counter. Drag rows with the mouse or sort by name or date above.
 
 The preview turns red if a name occurs twice or already exists – then nothing is renamed.
 <b>Undo</b> reverts the last renaming, even after restarting the program.
 
-Keyboard: <b>Ctrl+Enter</b> rename, <b>F1</b> help, <b>Esc</b> close.
+Keyboard: <b>Ctrl+Enter</b> rename, <b>F1</b> help, <b>F2</b> saved settings, <b>Esc</b> close.

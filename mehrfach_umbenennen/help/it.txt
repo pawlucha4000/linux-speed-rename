@@ -26,9 +26,16 @@ In alto componi il nuovo nome con dei <b>blocchi</b>. Un clic su un pulsante ins
 
 <b>Cerca e sostituisci</b> viene applicato dopo la maschera. «Espressione regolare» consente schemi avanzati, ma non è mai necessaria.
 
+<b>Espressioni regolari</b> – le parentesi tonde <tt>( )</tt> nel testo cercato memorizzano una parte; <tt>$1</tt>, <tt>$2</tt> … la reinseriscono nella sostituzione:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Disegno Oggetto  →  K733142-EN.1.- Disegno Oggetto
+  <tt>\S+</tt> = una parola senza spazi, <tt>.*</tt> = qualsiasi testo, <tt>\d</tt> = una cifra, <tt>^</tt> / <tt>$</tt> = inizio / fine.
+
+<b>F2 Carica/salva impostazioni</b> – salva tutti i campi con un nome per riutilizzare un’impostazione complessa con due clic. <b>F2</b> apre l’elenco.
+
 L’ordine dell’elenco determina il contatore. Trascina le righe con il mouse oppure ordina per nome o per data.
 
 L’anteprima diventa rossa se un nome compare due volte o esiste già: in quel caso non viene rinominato nulla.
 <b>Ripristina</b> annulla l’ultima rinomina, anche dopo il riavvio del programma.
 
-Tastiera: <b>Ctrl+Invio</b> rinomina, <b>F1</b> aiuto, <b>Esc</b> chiudi.
+Tastiera: <b>Ctrl+Invio</b> rinomina, <b>F1</b> aiuto, <b>F2</b> impostazioni salvate, <b>Esc</b> chiudi.

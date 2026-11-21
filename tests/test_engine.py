@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 Paul Bittner
 import datetime as dt
 import os
 import sys
@@ -62,6 +64,39 @@ class ComputeTest(unittest.TestCase):
         s = E.Settings(search=r"IMG_0*(\d+)", replace=r"Nr \1", regex=True)
         self.assertEqual(self.names(E.compute(self.files, s)), ["Nr 1.JPG", "Nr 2.JPG", "Nr 3.JPG"])
 
+    def regex_names(self, names, search, replace):
+        paths = []
+        for n in names:
+            p = os.path.join(self.d, n)
+            open(p, "w").close()
+            paths.append(p)
+        return self.names(E.compute(paths, E.Settings(search=search, replace=replace, regex=True)))
+
+    def test_regex_readme_examples(self):
+        # Beispiel aus dem Alltag (Zeichnungs-Export), wie im Total Commander mit $1 … $4
+        self.assertEqual(
+            self.regex_names(["K733142 - EN - 1 - - Zeichnung Objekt.jpg"],
+                             r"^(\S+) - (\S+) - (\S+) - (.*)$", "$1-$2.$3.$4"),
+            ["K733142-EN.1.- Zeichnung Objekt.jpg"])
+        # Datum umdrehen
+        self.assertEqual(self.regex_names(["03.10.2026 Rechnung.pdf"], r"^(\d\d)\.(\d\d)\.(\d{4})", "$3-$2-$1"),
+                         ["2026-10-03 Rechnung.pdf"])
+        # Vor- und Nachname tauschen
+        self.assertEqual(self.regex_names(["Müller Hans.jpg"], r"^(\S+) (\S+)$", "$2 $1"), ["Hans Müller.jpg"])
+        # Klammern samt Inhalt entfernen
+        self.assertEqual(self.regex_names(["Foto (Kopie).jpg"], r" ?\(.*?\)", ""), ["Foto.jpg"])
+        # Nummer am Anfang entfernen
+        self.assertEqual(self.regex_names(["07 - Lied.mp3"], r"^\d+\s*-\s*", ""), ["Lied.mp3"])
+        # Unterstriche und mehrfache Leerzeichen zu einem Leerzeichen
+        self.assertEqual(self.regex_names(["Mein__Urlaub   2026.jpg"], r"[ _]+", " "), ["Mein Urlaub 2026.jpg"])
+        # Alternative Schreibweisen \1 und ${1}, $$ für ein Dollarzeichen
+        self.assertEqual(self.regex_names(["ab.txt"], r"(a)(b)", r"\2${1}$$"), ["ba$.txt"])
+
+    def test_regex_missing_group_is_error(self):
+        entries = E.compute(self.files[:1], E.Settings(search=r"(IMG)", replace="$2", regex=True))
+        self.assertTrue(entries[0].error)
+        self.assertEqual(entries[0].new_name, os.path.basename(self.files[0]))
+
     def test_bad_regex_is_error_not_crash(self):
         s = E.Settings(search="(", regex=True)
         self.assertTrue(E.has_errors(E.compute(self.files, s)))
@@ -99,6 +134,16 @@ class ComputeTest(unittest.TestCase):
         entries = E.compute(self.files, s)
         self.assertFalse(E.has_errors(entries))
         self.assertEqual(E.execute(entries), [])
+
+
+class PresetTest(unittest.TestCase):
+    def test_roundtrip_and_robust_loading(self):
+        s = E.Settings(name_mask="[N]", search=r"^(\S+) - (.*)$", replace="$1-$2", regex=True, counter_digits=3)
+        self.assertEqual(E.settings_from_dict(E.settings_to_dict(s)), s)
+        # Unbekannte Schlüssel und falsche Typen (z. B. aus einer älteren Version) stören nicht
+        loaded = E.settings_from_dict({"search": "x", "regex": "ja", "unbekannt": 1})
+        self.assertEqual(loaded.search, "x")
+        self.assertFalse(loaded.regex)
 
 
 if __name__ == "__main__":

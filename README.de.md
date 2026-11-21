@@ -1,7 +1,9 @@
 # Mehrfach-Umbenennen
 
-Viele Dateien auf einmal umbenennen – so einfach wie im Mehrfach-Umbenenn-Tool des Total Commanders.
-Für Linux-Desktops mit GTK, eingebunden in den Dateimanager **Nemo** (Linux Mint / Cinnamon).
+Ein übersichtliches, intuitiv zu bedienendes Tool zum Umbenennen von einigen wenigen oder sehr, sehr vielen Dateien, das sich nahtlos in die Linux-Umgebung einfügt.
+Konzipiert als bedienungsfreundliche Integration für den Linux-Dateimanager **Nemo** (Linux Mint / Cinnamon) – nach dem Vorbild des Mehrfach-Umbenenn-Tools im Total Commander.
+
+Version 1.0.0 vom 2026-11-21 · Programmierung: Paul Bittner · Lizenz: GNU GPL v3 oder neuer
 
 *English: [README.md](README.md)*
 
@@ -32,11 +34,54 @@ Außerdem:
 - **Groß-/Kleinschreibung** ändern.
 - **Reihenfolge** (bestimmt den Zähler): nach Name oder Datum sortieren oder Zeilen mit der Maus verschieben.
 - **Verlauf:** zuletzt verwendete Masken im Pulldown.
+- **Einstellungen speichern (F2):** alle Felder unter einem Namen ablegen und später wieder laden – siehe unten.
+- **Reguläre Ausdrücke** mit `$1`, `$2` … wie im Total Commander – siehe die einfachen Beispiele unten.
 - **Rückgängig** – auch nach einem Neustart.
 - **Sicher:** Umbenannt wird zweistufig über temporäre Namen, Tausch (A↔B) klappt, bei einem Fehler wird alles zurückgerollt.
 - **Sprachen:** Deutsch, Englisch, Französisch, Spanisch, Italienisch, Niederländisch, Polnisch, Portugiesisch – automatisch nach Systemsprache.
 
-Tastatur: `Strg+Enter` umbenennen, `F1` Hilfe, `Esc` schließen.
+Tastatur: `Strg+Enter` umbenennen, `F1` Hilfe, `F2` gespeicherte Einstellungen, `Esc` schließen. Der Knopf **Über** zeigt Version, Programmierer und Lizenz (auf der Kommandozeile: `--version`).
+
+## Einstellungen speichern (F2)
+
+Komplizierte Einstellungen musst du nicht jedes Mal neu eintippen. Das Pulldown **„F2 Einstellungen laden/speichern“** (unter dem Zähler) speichert *alle* Felder – Masken, Suchen & Ersetzen, Optionen, Zähler – unter einem Namen deiner Wahl:
+
+- **Einstellungen speichern …** – die aktuellen Felder ablegen (neuen Namen eingeben oder einen vorhandenen wählen, um ihn zu überschreiben).
+- Einen gespeicherten Namen wählen – alle Felder werden wieder ausgefüllt.
+- **Eintrag löschen …** – die gerade geladenen Einstellungen entfernen.
+- **&lt;Standard&gt;** – zurück zu den einfachen Startwerten.
+
+Mit **F2** im Fenster öffnest du die Liste. Gespeichert wird in `~/.config/mehrfach-umbenennen/` (siehe unten).
+
+## Reguläre Ausdrücke – einfache Beispiele
+
+Reguläre Ausdrücke *braucht* man nie, aber sie helfen, wenn Namen einem festen Muster folgen und du Teile davon umstellen willst.
+Setze den Haken bei **„Regulärer Ausdruck“** und verwende im Feld **Suchen nach** diese Bausteine:
+
+| Schreibweise | Bedeutung |
+|---|---|
+| `\S+` | ein Wort ohne Leerzeichen (z. B. `K733142`) |
+| `\d` / `\d+` | eine Ziffer / eine oder mehrere Ziffern |
+| `.*` | beliebiger Text (auch leer) |
+| `^` / `$` | Anfang / Ende des Namens |
+| `\.` `\(` `\)` | ein echter Punkt, eine echte Klammer (sonst haben sie eine Sonderbedeutung) |
+| `( … )` | diesen Teil **merken** … |
+| `$1`, `$2` … | … und im Feld **Ersetzen durch** wieder einsetzen (1. Klammer, 2. Klammer …) |
+
+**Beispiele** (die Erweiterung, z. B. `.jpg`, bleibt unberührt, außer „auch in Erweiterung“ ist angehakt):
+
+| Aufgabe | Suchen nach | Ersetzen durch | Vorher → nachher |
+|---|---|---|---|
+| Zeichnungs-Export aufräumen | `^(\S+) - (\S+) - (\S+) - (.*)$` | `$1-$2.$3.$4` | `K733142 - EN - 1 - - Zeichnung Objekt` → `K733142-EN.1.- Zeichnung Objekt` |
+| Datum umdrehen | `^(\d\d)\.(\d\d)\.(\d{4})` | `$3-$2-$1` | `03.10.2026 Rechnung` → `2026-10-03 Rechnung` |
+| Zwei Wörter tauschen | `^(\S+) (\S+)$` | `$2 $1` | `Müller Hans` → `Hans Müller` |
+| Klammer samt Inhalt entfernen | ` ?\(.*?\)` | *(leer)* | `Foto (Kopie)` → `Foto` |
+| Nummer am Anfang entfernen | `^\d+\s*-\s*` | *(leer)* | `07 - Lied` → `Lied` |
+| Unterstriche und mehrfache Leerzeichen → ein Leerzeichen | `[ _]+` | ` ` *(ein Leerzeichen)* | `Mein__Urlaub   2026` → `Mein Urlaub 2026` |
+
+So liest sich das erste Beispiel: `^(\S+) - (\S+) - (\S+) - (.*)$` heißt *„am Anfang ein Wort (1), dann ` - `, ein Wort (2), ` - `, ein Wort (3), ` - ` und der Rest bis zum Ende (4)“*. Die Ersetzung `$1-$2.$3.$4` klebt die vier gemerkten Teile mit `-`, `.` und `.` wieder zusammen.
+
+Tipp: Beobachte beim Tippen die **Vorschau** – sie zeigt das Ergebnis sofort. Ein Muster, das du öfter brauchst, speicherst du mit **F2 → Einstellungen speichern …**.
 
 ## Installation
 
@@ -115,4 +160,6 @@ Ideen und Fehlerberichte sind willkommen.
 
 ## Lizenz
 
-MIT – siehe [LICENSE](LICENSE).
+Copyright © 2026 Paul Bittner
+
+Dieses Programm ist freie Software: Du kannst es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder verändern – entweder gemäß Version 3 der Lizenz oder (nach deiner Wahl) jeder späteren Version. Es wird in der Hoffnung verbreitet, dass es nützlich ist, aber OHNE JEDE GEWÄHRLEISTUNG. Den vollständigen (englischen) Lizenztext findest du in [LICENSE](LICENSE).

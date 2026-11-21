@@ -26,9 +26,16 @@ Oben baust du den neuen Namen aus <b>Bausteinen</b> zusammen. Klick auf einen Kn
 
 <b>Suchen &amp; Ersetzen</b> wird nach der Maske angewendet. Mit „Regulärer Ausdruck“ sind Profi-Muster möglich, nötig ist das aber nie.
 
+<b>Reguläre Ausdrücke</b> – runde Klammern <tt>( )</tt> im Suchtext merken sich einen Teil, <tt>$1</tt>, <tt>$2</tt> … setzen ihn beim Ersetzen wieder ein:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Zeichnung Objekt  →  K733142-EN.1.- Zeichnung Objekt
+  <tt>\S+</tt> = ein Wort ohne Leerzeichen, <tt>.*</tt> = beliebiger Text, <tt>\d</tt> = eine Ziffer, <tt>^</tt> / <tt>$</tt> = Anfang / Ende.
+
+<b>F2 Einstellungen laden/speichern</b> – speichert alle Felder unter einem Namen, damit du eine komplizierte Einstellung mit zwei Klicks wiederverwenden kannst. <b>F2</b> öffnet die Liste.
+
 Die Reihenfolge der Liste bestimmt den Zähler. Du kannst Zeilen mit der Maus verschieben oder oben nach Name oder Datum sortieren.
 
 Die Vorschau zeigt rot, wenn ein Name doppelt vorkommt oder schon existiert – dann wird nichts umbenannt.
 <b>Rückgängig</b> macht die letzte Umbenennung wieder rückgängig, auch nach einem Neustart des Programms.
 
-Tastatur: <b>Strg+Enter</b> umbenennen, <b>F1</b> Hilfe, <b>Esc</b> schließen.
+Tastatur: <b>Strg+Enter</b> umbenennen, <b>F1</b> Hilfe, <b>F2</b> gespeicherte Einstellungen, <b>Esc</b> schließen.

@@ -26,9 +26,16 @@ Arriba construye el nuevo nombre con <b>bloques</b>. Al hacer clic en un botón,
 
 <b>Buscar y reemplazar</b> se aplica después de la máscara. «Expresión regular» permite patrones avanzados, pero nunca es necesaria.
 
+<b>Expresiones regulares</b> – los paréntesis <tt>( )</tt> del texto buscado recuerdan una parte; <tt>$1</tt>, <tt>$2</tt> … la vuelven a insertar en el reemplazo:
+  <tt>^(\S+) - (\S+) - (\S+) - (.*)$</tt>  →  <tt>$1-$2.$3.$4</tt>
+  K733142 - EN - 1 - - Plano Objeto  →  K733142-EN.1.- Plano Objeto
+  <tt>\S+</tt> = una palabra sin espacios, <tt>.*</tt> = cualquier texto, <tt>\d</tt> = un dígito, <tt>^</tt> / <tt>$</tt> = inicio / final.
+
+<b>F2 Cargar/guardar ajustes</b> – guarda todos los campos con un nombre para reutilizar un ajuste complicado con dos clics. <b>F2</b> abre la lista.
+
 El orden de la lista determina el contador. Arrastre las filas con el ratón u ordene por nombre o fecha.
 
 La vista previa se marca en rojo si un nombre aparece dos veces o ya existe; en ese caso no se renombra nada.
 <b>Deshacer</b> revierte el último renombrado, incluso después de reiniciar el programa.
 
-Teclado: <b>Ctrl+Intro</b> renombrar, <b>F1</b> ayuda, <b>Esc</b> cerrar.
+Teclado: <b>Ctrl+Intro</b> renombrar, <b>F1</b> ayuda, <b>F2</b> ajustes guardados, <b>Esc</b> cerrar.
