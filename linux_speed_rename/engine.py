@@ -259,7 +259,7 @@ def execute(entries: list[Entry]) -> list[tuple[str, str]]:
     done: list[tuple[str, str]] = []
     try:
         for e in todo:
-            tmp = os.path.join(e.directory, f".mehrfach-umbenennen-{uuid.uuid4().hex}")
+            tmp = os.path.join(e.directory, f".linux-speed-rename-{uuid.uuid4().hex}")
             os.rename(e.path, tmp)
             staged.append((e, tmp))
         while staged:
@@ -289,7 +289,7 @@ def execute(entries: list[Entry]) -> list[tuple[str, str]]:
 
 def journal_path() -> str:
     base = os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share")
-    return os.path.join(base, "mehrfach-umbenennen", "rueckgaengig.json")
+    return os.path.join(base, "linux-speed-rename", "rueckgaengig.json")
 
 
 def save_journal(done: list[tuple[str, str]]) -> None:
@@ -335,7 +335,7 @@ def undo_last() -> list[tuple[str, str]]:
 
 def _config_path() -> str:
     base = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")
-    return os.path.join(base, "mehrfach-umbenennen", "einstellungen.json")
+    return os.path.join(base, "linux-speed-rename", "einstellungen.json")
 
 
 def load_config() -> dict:

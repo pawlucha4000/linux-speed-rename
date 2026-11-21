@@ -8,7 +8,7 @@ so no compilation step (msgfmt) is needed. The language follows the desktop's
 system language (LANGUAGE, LC_ALL, LC_MESSAGES, LANG); if there is no
 translation for it, British English is used.
 
-Set ``MEHRFACH_UMBENENNEN_LANG=fr`` to force a language for testing.
+Set ``LINUX_SPEED_RENAME_LANG=fr`` to force a language for testing.
 """
 
 from __future__ import annotations
@@ -79,7 +79,7 @@ def wanted_languages(env: dict | None = None) -> list[str]:
     """Languages the user wants, most preferred first, e.g. ['de_AT', 'de']."""
     env = os.environ if env is None else env
     raw: list[str] = []
-    forced = env.get("MEHRFACH_UMBENENNEN_LANG")
+    forced = env.get("LINUX_SPEED_RENAME_LANG")
     if forced:
         raw.append(forced)
     if env.get("LANGUAGE"):

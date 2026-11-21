@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from mehrfach_umbenennen import engine as E  # noqa: E402
+from linux_speed_rename import engine as E  # noqa: E402
 
 T = dt.datetime(2026, 10, 3, 14, 5, 9)
 

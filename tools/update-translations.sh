@@ -4,9 +4,9 @@
 # texts into all .po files (needs gettext: sudo apt install gettext).
 set -eu
 cd "$(dirname "$0")/.."
-LOC=mehrfach_umbenennen/locale
-xgettext --language=Python --keyword=_ --from-code=UTF-8 --package-name=mehrfach-umbenennen \
-    --no-wrap --sort-output --add-comments -o "$LOC/messages.pot" mehrfach_umbenennen/*.py
+LOC=linux_speed_rename/locale
+xgettext --language=Python --keyword=_ --from-code=UTF-8 --package-name=linux-speed-rename \
+    --no-wrap --sort-output --add-comments -o "$LOC/messages.pot" linux_speed_rename/*.py
 for po in "$LOC"/*.po; do
     msgmerge --quiet --update --backup=none --no-wrap --no-fuzzy-matching "$po" "$LOC/messages.pot"
     msgattrib --no-obsolete --no-wrap -o "$po" "$po"

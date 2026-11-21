@@ -55,7 +55,7 @@ Complicated setups do not have to be typed again. The drop-down **“F2 Load/sav
 - **Delete entry …** – remove the currently loaded settings.
 - **&lt;Default&gt;** – back to the plain starting values.
 
-Press **F2** in the window to open the list. The settings are stored in `~/.config/mehrfach-umbenennen/` (see below).
+Press **F2** in the window to open the list. The settings are stored in `~/.config/linux-speed-rename/` (see below).
 
 ## Regular expressions – simple examples
 
@@ -92,8 +92,8 @@ Tip: watch the **preview** while typing – it shows the result at once. Save a 
 Requires Python 3 and GTK 3 (pre-installed on Linux Mint; otherwise `sudo apt install python3-gi gir1.2-gtk-3.0`).
 
 ```sh
-git clone <repo-url> mehrfach-umbenennen
-cd mehrfach-umbenennen
+git clone <repo-url> linux-speed-rename
+cd linux-speed-rename
 ./install.sh
 ```
 
@@ -111,7 +111,7 @@ If the right-click entry does not show up straight away, restart Nemo once: `nem
 ./uninstall.sh
 ```
 
-This also restores Nemo's previous rename tool. Your settings in `~/.config/mehrfach-umbenennen` stay.
+This also restores Nemo's previous rename tool. Your settings in `~/.config/linux-speed-rename` stay.
 
 ### Manual integration into Nemo (optional)
 
@@ -119,24 +119,24 @@ This also restores Nemo's previous rename tool. Your settings in `~/.config/mehr
 
 ```sh
 # F2 with several files selected
-gsettings set org.nemo.preferences bulk-rename-tool "b'/path/to/mehrfach-umbenennen'"
+gsettings set org.nemo.preferences bulk-rename-tool "b'/path/to/linux-speed-rename'"
 
 # back to the previous tool (e.g. on Linux Mint 22)
 gsettings reset org.nemo.preferences bulk-rename-tool
 ```
 
-For the right-click entry, copy `nemo/mehrfach-umbenennen.nemo_action` to `~/.local/share/nemo/actions/` and replace `@LAUNCHER@` with the path to the program.
+For the right-click entry, copy `nemo/linux-speed-rename.nemo_action` to `~/.local/share/nemo/actions/` and replace `@LAUNCHER@` with the path to the program.
 
 ### Try without installing
 
 ```sh
-python3 -m mehrfach_umbenennen FILE …
+python3 -m linux_speed_rename FILE …
 ```
 
 ## Languages
 
 The language follows the desktop's system language (`LANGUAGE`, `LC_ALL`, `LC_MESSAGES`, `LANG`). If there is no translation, British English is used.
-To test another language: `MEHRFACH_UMBENENNEN_LANG=fr python3 -m mehrfach_umbenennen FILE …`
+To test another language: `LINUX_SPEED_RENAME_LANG=fr python3 -m linux_speed_rename FILE …`
 
 The initial translations were machine-assisted. **Corrections by native speakers are very welcome.**
 
@@ -144,8 +144,8 @@ The initial translations were machine-assisted. **Corrections by native speakers
 
 Texts are in standard gettext files – any `.po` editor (e.g. Poedit) works:
 
-1. Copy `mehrfach_umbenennen/locale/messages.pot` to `mehrfach_umbenennen/locale/<code>.po` (e.g. `sv.po`) and translate it.
-2. Translate the help text `mehrfach_umbenennen/help/en.txt` into `help/<code>.txt`.
+1. Copy `linux_speed_rename/locale/messages.pot` to `linux_speed_rename/locale/<code>.po` (e.g. `sv.po`) and translate it.
+2. Translate the help text `linux_speed_rename/help/en.txt` into `help/<code>.txt`.
 3. Add `Name[<code>]` / `Comment[<code>]` lines to `nemo/*.nemo_action` and `desktop/*.desktop`.
 4. Run the tests – they check that every text is translated and placeholders like `{n}` are kept.
 
@@ -153,7 +153,7 @@ No compilation step is needed; the program reads the `.po` files directly.
 
 ## Development
 
-The renaming logic lives without any GUI in `mehrfach_umbenennen/engine.py`, the window in `app.py`, translations in `i18n.py`.
+The renaming logic lives without any GUI in `linux_speed_rename/engine.py`, the window in `app.py`, translations in `i18n.py`.
 
 ```sh
 python3 -m unittest discover -s tests -v

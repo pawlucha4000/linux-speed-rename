@@ -1,10 +1,10 @@
-# Polish translation of Mehrfach-Umbenennen / Multi-Rename.
-# This file is distributed under the same licence as the mehrfach-umbenennen package.
+# Polish translation of Linux Speed Rename.
+# This file is distributed under the same licence as the linux-speed-rename package.
 # Initial machine-assisted translation - corrections by native speakers are welcome.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mehrfach-umbenennen\n"
+"Project-Id-Version: linux-speed-rename\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-21 01:11+0100\n"
 "Language: pl\n"
@@ -13,360 +13,360 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: mehrfach_umbenennen/app.py:251
+#: linux_speed_rename/app.py:251
 msgid "3 digits gives 001, 002, 003 …"
 msgstr "3 cyfry dają 001, 002, 003 …"
 
-#: mehrfach_umbenennen/app.py:272
+#: linux_speed_rename/app.py:272
 msgid "<Default>"
 msgstr "<Domyślne>"
 
-#: mehrfach_umbenennen/app.py:26
+#: linux_speed_rename/app.py:26
 msgid "A clear, intuitive tool for renaming a handful or a great many files that blends seamlessly into the Linux desktop. Designed as a user-friendly integration for the Linux file manager Nemo."
 msgstr "Przejrzyste, intuicyjne narzędzie do zmiany nazw kilku lub bardzo wielu plików, które płynnie wpasowuje się w środowisko Linux. Zaprojektowane jako przyjazna integracja z linuksowym menedżerem plików Nemo."
 
-#: mehrfach_umbenennen/app.py:163 mehrfach_umbenennen/app.py:522
+#: linux_speed_rename/app.py:163 linux_speed_rename/app.py:522
 msgid "About"
 msgstr "O programie"
 
-#: mehrfach_umbenennen/app.py:306 mehrfach_umbenennen/app.py:338
-#: mehrfach_umbenennen/app.py:373 mehrfach_umbenennen/app.py:577
+#: linux_speed_rename/app.py:306 linux_speed_rename/app.py:338
+#: linux_speed_rename/app.py:373 linux_speed_rename/app.py:577
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: mehrfach_umbenennen/app.py:230
+#: linux_speed_rename/app.py:230
 msgid "Case:"
 msgstr "Wielkość liter:"
 
-#: mehrfach_umbenennen/app.py:576
+#: linux_speed_rename/app.py:576
 msgid "Choose files to rename"
 msgstr "Wybierz pliki do zmiany nazwy"
 
-#: mehrfach_umbenennen/app.py:172 mehrfach_umbenennen/app.py:523
+#: linux_speed_rename/app.py:172 linux_speed_rename/app.py:523
 msgid "Close"
 msgstr "Zamknij"
 
-#: mehrfach_umbenennen/app.py:428
+#: linux_speed_rename/app.py:428
 #, python-brace-format
 msgid "Conflicts: {n} – please adjust the mask."
 msgstr "Konflikty: {n} – dostosuj maskę."
 
-#: mehrfach_umbenennen/app.py:350
+#: linux_speed_rename/app.py:350
 msgid "Could not save the settings."
 msgstr "Nie udało się zapisać ustawień."
 
-#: mehrfach_umbenennen/app.py:252
+#: linux_speed_rename/app.py:252
 msgid "Counter [C]"
 msgstr "Licznik [C]"
 
-#: mehrfach_umbenennen/app.py:338
+#: linux_speed_rename/app.py:338
 msgid "Delete"
 msgstr "Usuń"
 
-#: mehrfach_umbenennen/app.py:274
+#: linux_speed_rename/app.py:274
 msgid "Delete entry …"
 msgstr "Usuń wpis …"
 
-#: mehrfach_umbenennen/app.py:337
+#: linux_speed_rename/app.py:337
 #, python-brace-format
 msgid "Delete the saved settings “{name}”?"
 msgstr "Usunąć zapisane ustawienia „{name}”?"
 
-#: mehrfach_umbenennen/app.py:248
+#: linux_speed_rename/app.py:248
 msgid "Digits:"
 msgstr "Cyfry:"
 
-#: mehrfach_umbenennen/engine.py:231 mehrfach_umbenennen/engine.py:233
+#: linux_speed_rename/engine.py:231 linux_speed_rename/engine.py:233
 msgid "Duplicate name"
 msgstr "Zduplikowana nazwa"
 
-#: mehrfach_umbenennen/engine.py:39
+#: linux_speed_rename/engine.py:39
 msgid "Each Word Capitalised"
 msgstr "Każde Słowo Wielką Literą"
 
-#: mehrfach_umbenennen/engine.py:221
+#: linux_speed_rename/engine.py:221
 msgid "Empty name"
 msgstr "Pusta nazwa"
 
-#: mehrfach_umbenennen/app.py:369
+#: linux_speed_rename/app.py:369
 msgid "Example name"
 msgstr "Przykładowa nazwa"
 
-#: mehrfach_umbenennen/app.py:111
+#: linux_speed_rename/app.py:111
 msgid "Extension"
 msgstr "Rozszerzenie"
 
-#: mehrfach_umbenennen/app.py:271
+#: linux_speed_rename/app.py:271
 msgid "F2 Load/save settings"
 msgstr "F2 Wczytaj/zapisz ustawienia"
 
-#: mehrfach_umbenennen/engine.py:243
+#: linux_speed_rename/engine.py:243
 msgid "File already exists"
 msgstr "Plik już istnieje"
 
-#: mehrfach_umbenennen/app.py:500
+#: linux_speed_rename/app.py:500
 #, python-brace-format
 msgid "Files renamed: {n}. “Undo” restores the old names."
 msgstr "Zmieniono nazwy plików: {n}. „Cofnij” przywraca stare nazwy."
 
-#: mehrfach_umbenennen/app.py:511
+#: linux_speed_rename/app.py:511
 #, python-brace-format
 msgid "Files restored to their old names: {n}"
 msgstr "Przywrócono stare nazwy plików: {n}"
 
-#: mehrfach_umbenennen/app.py:430
+#: linux_speed_rename/app.py:430
 #, python-brace-format
 msgid "Files to be renamed: {n} of {total}"
 msgstr "Pliki do zmiany nazwy: {n} z {total}"
 
-#: mehrfach_umbenennen/app.py:432
+#: linux_speed_rename/app.py:432
 #, python-brace-format
 msgid "Files: {total} – no changes yet"
 msgstr "Pliki: {total} – brak zmian"
 
-#: mehrfach_umbenennen/engine.py:39
+#: linux_speed_rename/engine.py:39
 msgid "First letter capital"
 msgstr "Pierwsza litera wielka"
 
-#: mehrfach_umbenennen/app.py:142
+#: linux_speed_rename/app.py:142
 msgid "Folder"
 msgstr "Folder"
 
-#: mehrfach_umbenennen/app.py:226
+#: linux_speed_rename/app.py:226
 msgid "For advanced users: treat the search text as a regular expression"
 msgstr "Dla zaawansowanych: traktuj szukany tekst jako wyrażenie regularne"
 
-#: mehrfach_umbenennen/engine.py:155
+#: linux_speed_rename/engine.py:155
 #, python-brace-format
 msgid "Group ${n} does not exist in the search pattern"
 msgstr "Grupa ${n} nie istnieje we wzorcu wyszukiwania"
 
-#: mehrfach_umbenennen/app.py:165 mehrfach_umbenennen/app.py:521
+#: linux_speed_rename/app.py:165 linux_speed_rename/app.py:521
 msgid "Help"
 msgstr "Pomoc"
 
-#: mehrfach_umbenennen/app.py:373
+#: linux_speed_rename/app.py:373
 msgid "Insert"
 msgstr "Wstaw"
 
-#: mehrfach_umbenennen/engine.py:225
+#: linux_speed_rename/engine.py:225
 msgid "Invalid name"
 msgstr "Nieprawidłowa nazwa"
 
-#: mehrfach_umbenennen/engine.py:187
+#: linux_speed_rename/engine.py:187
 #, python-brace-format
 msgid "Invalid regular expression: {error}"
 msgstr "Nieprawidłowe wyrażenie regularne: {error}"
 
-#: mehrfach_umbenennen/app.py:35
+#: linux_speed_rename/app.py:35
 msgid "Licence: GNU GPL v3 or later – free software without any warranty"
 msgstr "Licencja: GNU GPL v3 lub nowsza – wolne oprogramowanie bez żadnej gwarancji"
 
-#: mehrfach_umbenennen/engine.py:223
+#: linux_speed_rename/engine.py:223
 msgid "Name contains '/'"
 msgstr "Nazwa zawiera „/”"
 
-#: mehrfach_umbenennen/app.py:312
+#: linux_speed_rename/app.py:312
 msgid "Name for these settings:"
 msgstr "Nazwa tych ustawień:"
 
-#: mehrfach_umbenennen/engine.py:227
+#: linux_speed_rename/engine.py:227
 msgid "Name too long"
 msgstr "Nazwa jest za długa"
 
-#: mehrfach_umbenennen/app.py:102
+#: linux_speed_rename/app.py:102
 msgid "New file name"
 msgstr "Nowa nazwa pliku"
 
-#: mehrfach_umbenennen/app.py:141
+#: linux_speed_rename/app.py:141
 msgid "New name"
 msgstr "Nowa nazwa"
 
-#: mehrfach_umbenennen/app.py:142
+#: linux_speed_rename/app.py:142
 msgid "Note"
 msgstr "Uwaga"
 
-#: mehrfach_umbenennen/app.py:141
+#: linux_speed_rename/app.py:141
 msgid "Old name"
 msgstr "Stara nazwa"
 
-#: mehrfach_umbenennen/app.py:577
+#: linux_speed_rename/app.py:577
 msgid "Open"
 msgstr "Otwórz"
 
-#: mehrfach_umbenennen/app.py:124
+#: linux_speed_rename/app.py:124
 msgid "Order (sets the counter):"
 msgstr "Kolejność (określa licznik):"
 
-#: mehrfach_umbenennen/app.py:34
+#: linux_speed_rename/app.py:34
 #, python-brace-format
 msgid "Programming: {author}"
 msgstr "Programowanie: {author}"
 
-#: mehrfach_umbenennen/app.py:224
+#: linux_speed_rename/app.py:224
 msgid "Regular expression"
 msgstr "Wyrażenie regularne"
 
-#: mehrfach_umbenennen/app.py:169
+#: linux_speed_rename/app.py:169
 msgid "Rename"
 msgstr "Zmień nazwy"
 
 #. noqa: BLE001
-#: mehrfach_umbenennen/app.py:492
+#: linux_speed_rename/app.py:492
 msgid "Renaming failed. Nothing was changed."
 msgstr "Zmiana nazw nie powiodła się. Nic nie zostało zmienione."
 
-#: mehrfach_umbenennen/app.py:225
+#: linux_speed_rename/app.py:225
 msgid "Replace only the first occurrence"
 msgstr "Zastąp tylko pierwsze wystąpienie"
 
-#: mehrfach_umbenennen/app.py:219
+#: linux_speed_rename/app.py:219
 msgid "Replace with:"
 msgstr "Zamień na:"
 
-#: mehrfach_umbenennen/app.py:130
+#: linux_speed_rename/app.py:130
 msgid "Reset all"
 msgstr "Resetuj wszystko"
 
-#: mehrfach_umbenennen/app.py:306
+#: linux_speed_rename/app.py:306
 msgid "Save"
 msgstr "Zapisz"
 
-#: mehrfach_umbenennen/app.py:261
+#: linux_speed_rename/app.py:261
 msgid "Save all settings under a name and load them again later (F2)"
 msgstr "Zapisz wszystkie ustawienia pod nazwą i wczytaj je później (F2)"
 
-#: mehrfach_umbenennen/app.py:305
+#: linux_speed_rename/app.py:305
 msgid "Save settings"
 msgstr "Zapisz ustawienia"
 
-#: mehrfach_umbenennen/app.py:273
+#: linux_speed_rename/app.py:273
 msgid "Save settings …"
 msgstr "Zapisz ustawienia …"
 
-#: mehrfach_umbenennen/app.py:236
+#: linux_speed_rename/app.py:236
 msgid "Search & Replace"
 msgstr "Znajdź i zamień"
 
-#: mehrfach_umbenennen/app.py:217
+#: linux_speed_rename/app.py:217
 msgid "Search for:"
 msgstr "Szukaj:"
 
-#: mehrfach_umbenennen/app.py:372
+#: linux_speed_rename/app.py:372
 msgid "Select part"
 msgstr "Wybierz część"
 
-#: mehrfach_umbenennen/app.py:333
+#: linux_speed_rename/app.py:333
 msgid "Select saved settings first."
 msgstr "Najpierw wybierz zapisane ustawienia."
 
-#: mehrfach_umbenennen/app.py:380
+#: linux_speed_rename/app.py:380
 msgid "Select the part you want to keep with the mouse:"
 msgstr "Zaznacz myszą część, którą chcesz zachować:"
 
-#: mehrfach_umbenennen/app.py:247
+#: linux_speed_rename/app.py:247
 msgid "Start at:"
 msgstr "Zacznij od:"
 
-#: mehrfach_umbenennen/app.py:247
+#: linux_speed_rename/app.py:247
 msgid "Step:"
 msgstr "Krok:"
 
-#: mehrfach_umbenennen/engine.py:268
+#: linux_speed_rename/engine.py:268
 #, python-brace-format
 msgid "Target already exists: {path}"
 msgstr "Cel już istnieje: {path}"
 
-#: mehrfach_umbenennen/engine.py:256
+#: linux_speed_rename/engine.py:256
 msgid "There are conflicts, please resolve them first."
 msgstr "Występują konflikty, najpierw je rozwiąż."
 
-#: mehrfach_umbenennen/engine.py:39
+#: linux_speed_rename/engine.py:39
 msgid "UPPERCASE"
 msgstr "WIELKIE LITERY"
 
-#: mehrfach_umbenennen/engine.py:39
+#: linux_speed_rename/engine.py:39
 msgid "Unchanged"
 msgstr "Bez zmian"
 
-#: mehrfach_umbenennen/app.py:167
+#: linux_speed_rename/app.py:167
 msgid "Undo"
 msgstr "Cofnij"
 
 #. noqa: BLE001
-#: mehrfach_umbenennen/app.py:506
+#: linux_speed_rename/app.py:506
 msgid "Undo is not possible."
 msgstr "Cofnięcie nie jest możliwe."
 
-#: mehrfach_umbenennen/app.py:33 mehrfach_umbenennen/app.py:540
+#: linux_speed_rename/app.py:33 linux_speed_rename/app.py:540
 #, python-brace-format
 msgid "Version {version} of {date}"
 msgstr "Wersja {version} z {date}"
 
-#: mehrfach_umbenennen/app.py:97 mehrfach_umbenennen/app.py:109
+#: linux_speed_rename/app.py:97 linux_speed_rename/app.py:109
 msgid "[C] Counter"
 msgstr "[C] Licznik"
 
-#: mehrfach_umbenennen/app.py:108
+#: linux_speed_rename/app.py:108
 msgid "[E#-#] Part"
 msgstr "[E#-#] Część"
 
-#: mehrfach_umbenennen/app.py:107
+#: linux_speed_rename/app.py:107
 msgid "[E] Extension"
 msgstr "[E] Rozszerzenie"
 
-#: mehrfach_umbenennen/app.py:96
+#: linux_speed_rename/app.py:96
 msgid "[N#-#] Part"
 msgstr "[N#-#] Część"
 
-#: mehrfach_umbenennen/app.py:95
+#: linux_speed_rename/app.py:95
 msgid "[N] Name"
 msgstr "[N] Nazwa"
 
-#: mehrfach_umbenennen/app.py:100
+#: linux_speed_rename/app.py:100
 msgid "[P] Folder"
 msgstr "[P] Folder"
 
-#: mehrfach_umbenennen/app.py:98
+#: linux_speed_rename/app.py:98
 msgid "[YMD] Date"
 msgstr "[YMD] Data"
 
-#: mehrfach_umbenennen/app.py:99
+#: linux_speed_rename/app.py:99
 msgid "[hms] Time"
 msgstr "[hms] Czas"
 
-#: mehrfach_umbenennen/app.py:223
+#: linux_speed_rename/app.py:223
 msgid "also in extension"
 msgstr "także w rozszerzeniu"
 
-#: mehrfach_umbenennen/app.py:125
+#: linux_speed_rename/app.py:125
 msgid "by date"
 msgstr "wg daty"
 
-#: mehrfach_umbenennen/app.py:125
+#: linux_speed_rename/app.py:125
 msgid "by name"
 msgstr "wg nazwy"
 
-#: mehrfach_umbenennen/app.py:385
+#: linux_speed_rename/app.py:385
 msgid "count from the end (the last characters)"
 msgstr "licz od końca (ostatnie znaki)"
 
-#: mehrfach_umbenennen/engine.py:39
+#: linux_speed_rename/engine.py:39
 msgid "lowercase"
 msgstr "małe litery"
 
-#: mehrfach_umbenennen/app.py:222
+#: linux_speed_rename/app.py:222
 msgid "only once"
 msgstr "tylko raz"
 
-#: mehrfach_umbenennen/app.py:129
+#: linux_speed_rename/app.py:129
 msgid "or drag rows with the mouse"
 msgstr "lub przeciągnij wiersze myszą"
 
-#: mehrfach_umbenennen/app.py:442
+#: linux_speed_rename/app.py:442
 msgid "unchanged"
 msgstr "bez zmian"
 
-#: mehrfach_umbenennen/app.py:384
+#: linux_speed_rename/app.py:384
 msgid "up to the end (even if other names are longer)"
 msgstr "do końca (nawet jeśli inne nazwy są dłuższe)"

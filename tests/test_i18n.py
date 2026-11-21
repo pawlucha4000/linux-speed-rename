@@ -9,7 +9,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from mehrfach_umbenennen import i18n  # noqa: E402
+from linux_speed_rename import i18n  # noqa: E402
 
 POT = os.path.join(i18n.LOCALE_DIR, "messages.pot")
 
@@ -34,7 +34,7 @@ class LanguageChoiceTest(unittest.TestCase):
         self.assertEqual(i18n.pick_language({}), "en")
 
     def test_forced_language(self):
-        self.assertEqual(i18n.pick_language({"MEHRFACH_UMBENENNEN_LANG": "it", "LANG": "de_DE.UTF-8"}), "it")
+        self.assertEqual(i18n.pick_language({"LINUX_SPEED_RENAME_LANG": "it", "LANG": "de_DE.UTF-8"}), "it")
 
 
 class CatalogTest(unittest.TestCase):
