@@ -11,6 +11,8 @@ Version 1.0.0 vom 2026-11-21 · Programmierung: Paul Bittner · Lizenz: GNU GPL 
 
 Nach der Installation den Dateimanager Nemo öffnen, die Dateien markieren, die umbenannt werden sollen, und **F2** drücken.
 
+![Linux Speed Rename mit einer Beispielmaske](docs/screenshot.png)
+
 ## Warum?
 
 Die üblichen Linux-Umbenenner sind entweder zu schlicht oder sehen aus wie ein Cockpit.
