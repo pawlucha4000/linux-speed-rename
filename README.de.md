@@ -1,4 +1,4 @@
-# Mehrfach-Umbenennen
+# Linux Speed Rename
 
 Ein übersichtliches, intuitiv zu bedienendes Tool zum Umbenennen von einigen wenigen oder sehr, sehr vielen Dateien, das sich nahtlos in die Linux-Umgebung einfügt.
 Konzipiert als bedienungsfreundliche Integration für den Linux-Dateimanager **Nemo** (Linux Mint / Cinnamon) – nach dem Vorbild des Mehrfach-Umbenenn-Tools im Total Commander.
@@ -6,6 +6,10 @@ Konzipiert als bedienungsfreundliche Integration für den Linux-Dateimanager **N
 Version 1.0.0 vom 2026-11-21 · Programmierung: Paul Bittner · Lizenz: GNU GPL v3 oder neuer
 
 *English: [README.md](README.md)*
+
+## So benutzt du das Tool
+
+Nach der Installation den Dateimanager Nemo öffnen, die Dateien markieren, die umbenannt werden sollen, und **F2** drücken.
 
 ## Warum?
 
@@ -95,7 +99,7 @@ cd mehrfach-umbenennen
 
 Das Installationsskript installiert nur für deinen Benutzer (nach `~/.local`), braucht keine Root-Rechte und **bindet das Tool automatisch in Nemo ein**:
 
-1. **F2 bei mehreren markierten Dateien** öffnet Mehrfach-Umbenennen (Nemo-Einstellung `bulk-rename-tool`; der vorherige Wert wird gemerkt).
+1. **F2 bei mehreren markierten Dateien** öffnet Linux Speed Rename (Nemo-Einstellung `bulk-rename-tool`; der vorherige Wert wird gemerkt).
 2. Im **Rechtsklick-Menü** erscheint „Mehrfach umbenennen …“.
 3. Ein **Startmenü-Eintrag** wird angelegt.
 

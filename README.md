@@ -1,4 +1,4 @@
-# Multi-Rename (Mehrfach-Umbenennen)
+# Linux Speed Rename
 
 A clear, intuitive tool for renaming a handful or a great many files that blends seamlessly into the Linux desktop.
 Designed as a user-friendly integration for the Linux file manager **Nemo** (Linux Mint / Cinnamon) – inspired by the multi-rename tool of Total Commander.
@@ -6,6 +6,10 @@ Designed as a user-friendly integration for the Linux file manager **Nemo** (Lin
 Version 1.0.0 of 2026-11-21 · Programming: Paul Bittner · Licence: GNU GPL v3 or later
 
 *Deutsch: [README.de.md](README.de.md)*
+
+## How to use
+
+When installed, start the file manager Nemo, mark the files you want to rename and press **F2**.
 
 ## Why?
 
@@ -95,8 +99,8 @@ cd mehrfach-umbenennen
 
 The installer works for your user only (into `~/.local`), needs no root rights, and **integrates the tool into Nemo automatically**:
 
-1. **F2 with several files selected** opens Multi-Rename (Nemo setting `bulk-rename-tool`; the previous value is saved).
-2. **Right-click menu** gets the entry “Multi-rename …”.
+1. **F2 with several files selected** opens Linux Speed Rename (Nemo setting `bulk-rename-tool`; the previous value is saved).
+2. **Right-click menu** gets the entry “Linux Speed Rename …”.
 3. A **start menu entry** is created.
 
 If the right-click entry does not show up straight away, restart Nemo once: `nemo -q`.
