@@ -11,7 +11,7 @@ Version 1.0.0 of 2026-11-21 · Programming: Paul Bittner · Licence: GNU GPL v3 
 
 When installed, start the file manager Nemo, mark the files you want to rename and press **F2**.
 
-![Linux Speed Rename with a sample mask](docs/screenshot.png)
+![Linux Speed Rename with a sample mask](docs/screenshot-en.png)
 
 ## Why?
 
